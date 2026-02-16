@@ -116,9 +116,9 @@ export default function ScrimPage() {
 
             <div className="space-y-4 mb-8">
               <p className="text-sub-text leading-relaxed">
-                U13を対象としたNEOS主催の対抗戦
+                一人ひとりが獅子になる
                 <br />
-                同年代だからこそ生まれる本気の競争がある
+                U13を対象としたNEOS主催ソロラガ
               </p>
               <p className="text-white text-lg">
                 勝った日も負けた日も、また集まる
