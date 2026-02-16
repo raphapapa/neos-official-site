@@ -44,7 +44,7 @@ export default async function MemberDetailPage({ params }: Props) {
           {/* Image */}
           <AnimateIn>
             <div className="space-y-4">
-              <div className="relative aspect-[3/4] overflow-hidden bg-card rounded-sm">
+              <div className="relative aspect-square overflow-hidden bg-card rounded-sm">
                 {primaryImage ? (
                   <Image
                     src={primaryImage.url}

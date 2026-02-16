@@ -29,7 +29,7 @@ const SECTION_HEADINGS: Record<DisplayCategory, { title: string; subtitle: strin
 function PlayerCard({ player }: { player: Player }) {
   return (
     <Link href={`/members/${player.id}`} className="group block">
-      <div className="relative aspect-[3/4] overflow-hidden bg-card rounded-sm">
+      <div className="relative aspect-square overflow-hidden bg-card rounded-sm">
         {player.image_url ? (
           <Image
             src={player.image_url}
