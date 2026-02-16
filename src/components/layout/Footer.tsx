@@ -11,7 +11,20 @@ const NAV_ITEMS = [
   { href: "/contact", label: "CONTACT" },
 ];
 
-export function Footer() {
+const X_ICON = (
+  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
+type Props = {
+  xUrl?: string;
+  juniorXUrl?: string;
+};
+
+export function Footer({ xUrl, juniorXUrl }: Props) {
+  const mainX = xUrl || "https://x.com/neos_esports";
+
   return (
     <footer className="border-t border-white/10 bg-[#050505]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
@@ -45,18 +58,29 @@ export function Footer() {
             ))}
           </nav>
 
-          {/* X Link */}
-          <a
-            href="https://x.com/neos_esports"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sub-text hover:text-white transition-colors"
-            aria-label="X (Twitter)"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-          </a>
+          {/* X Links */}
+          <div className="flex items-center gap-6">
+            <a
+              href={mainX}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sub-text hover:text-white transition-colors"
+            >
+              {X_ICON}
+              <span className="font-heading text-xs tracking-wider">NEOS</span>
+            </a>
+            {juniorXUrl && (
+              <a
+                href={juniorXUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sub-text hover:text-white transition-colors"
+              >
+                {X_ICON}
+                <span className="font-heading text-xs tracking-wider">JUNIOR</span>
+              </a>
+            )}
+          </div>
 
           {/* Copyright */}
           <p className="text-xs text-sub-text/60">

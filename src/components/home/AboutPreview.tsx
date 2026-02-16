@@ -13,11 +13,11 @@ export function AboutPreview() {
         <AnimateIn delay={0.2}>
           <div className="text-center space-y-6">
             <p className="text-sub-text leading-relaxed text-base sm:text-lg">
-              NEOS E-SPORTSは、eスポーツを通じて人が本気で成長する環境を設計し、伴走するチームです。
+              eスポーツを通じて人が本気で成長する環境を設計し、伴走する
               <br className="hidden sm:block" />
-              「勝つために人を使う」のではなく「人が成長する結果として競技力が高まる」。
+              「勝つために人を使う」のではなく「人が成長する結果として競技力が高まる」
               <br className="hidden sm:block" />
-              それが私たちの信じるeスポーツの姿です。
+              それがNEOS E-SPORTSの信じるeスポーツの姿
             </p>
             <Link
               href="/about"

@@ -3,6 +3,7 @@ import { Bebas_Neue, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { getSiteSettings } from "@/lib/api";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -23,18 +24,20 @@ export const metadata: Metadata = {
     template: "%s | NEOS E-SPORTS",
   },
   description:
-    "NEOS E-SPORTSはFortniteを中心に活動するeスポーツチームです。eスポーツを通じて人が本気で成長する環境を設計し、伴走します。",
+    "NEOS E-SPORTSはFortniteを中心に活動するeスポーツチーム eスポーツを通じて人が本気で成長する環境を設計し、伴走する",
   robots: {
     index: false,
     follow: false,
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await getSiteSettings();
+
   return (
     <html lang="ja">
       <body
@@ -42,7 +45,10 @@ export default function RootLayout({
       >
         <Header />
         <main className="min-h-screen">{children}</main>
-        <Footer />
+        <Footer
+          xUrl={settings.x_url}
+          juniorXUrl={settings.junior_x_url}
+        />
       </body>
     </html>
   );
