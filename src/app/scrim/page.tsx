@@ -28,12 +28,12 @@ export default function ScrimPage() {
         <AnimateIn delay={0.2}>
           <div className="max-w-2xl mx-auto text-center mb-24">
             <p className="text-white text-lg sm:text-xl leading-relaxed mb-6">
-              才能だけで勝てることは少ない
+              勝負を分けるのは、準備の総量
               <br />
-              準備した者が、最後に残る
+              最後に残るのは、続けた者だけ
             </p>
             <p className="text-sub-text text-sm sm:text-base leading-loose">
-              NEOSは練習環境の提供を目的にスクリムを定期開催している
+              練習環境の提供を目的としたスクリムの定期開催
               <br />
               特別な一日ではなく、当たり前の日常にこそ成長がある
               <br />
