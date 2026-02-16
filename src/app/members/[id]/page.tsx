@@ -52,7 +52,6 @@ export default async function MemberDetailPage({ params }: Props) {
                     alt={player.name}
                     fill
                     className="object-cover"
-                    style={player.detail_image_scale && player.detail_image_scale !== 1 ? { transform: `scale(${player.detail_image_scale})` } : undefined}
                     priority
                   />
                 ) : (

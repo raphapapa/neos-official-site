@@ -35,12 +35,7 @@ function PlayerCard({ player }: { player: Player }) {
             src={player.image_url}
             alt={player.name_en || player.name}
             fill
-            className={`object-cover transition-transform duration-500 ${
-              !player.list_image_scale || player.list_image_scale === 1
-                ? "group-hover:scale-105"
-                : ""
-            }`}
-            style={player.list_image_scale && player.list_image_scale !== 1 ? { transform: `scale(${player.list_image_scale})` } : undefined}
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-card to-[#111]">
