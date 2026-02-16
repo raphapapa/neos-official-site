@@ -18,6 +18,7 @@ export type Player = {
   earnings: number | null;
   jersey_number: number | null;
   image_url: string | null;
+  list_image_scale?: number;
 };
 
 export type PlayerImage = {
@@ -39,6 +40,7 @@ export type TournamentResult = {
 
 export type PlayerDetail = Omit<Player, "image_url"> & {
   join_date: string | null;
+  detail_image_scale?: number;
   images: PlayerImage[];
   tournament_results: TournamentResult[];
 };
