@@ -6,6 +6,8 @@ import {
   DISPLAY_CATEGORY_LABELS,
   DISPLAY_CATEGORY_ORDER,
   DISPLAY_CATEGORY_COLORS,
+  CATEGORY_LABELS,
+  CATEGORY_COLORS,
   sortMembers,
 } from "@/lib/constants";
 import type { DisplayCategory } from "@/lib/constants";
@@ -61,9 +63,7 @@ export function PlayerFilter({ players }: Props) {
 
       {/* Player grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        {filtered.map((player) => {
-          const dc = toDisplayCategory(player.category);
-          return (
+        {filtered.map((player) => (
             <Link
               key={player.id}
               href={`/members/${player.id}`}
@@ -92,10 +92,10 @@ export function PlayerFilter({ players }: Props) {
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
                   <span
                     className={`inline-block text-[10px] px-2 py-0.5 rounded-sm mb-2 ${
-                      DISPLAY_CATEGORY_COLORS[dc]
+                      CATEGORY_COLORS[player.category]
                     }`}
                   >
-                    {DISPLAY_CATEGORY_LABELS[dc]}
+                    {CATEGORY_LABELS[player.category]}
                   </span>
                   <h3 className="font-heading text-lg sm:text-xl tracking-wider text-white">
                     {player.name}
@@ -103,8 +103,7 @@ export function PlayerFilter({ players }: Props) {
                 </div>
               </div>
             </Link>
-          );
-        })}
+          ))}
       </div>
     </>
   );

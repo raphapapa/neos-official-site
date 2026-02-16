@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getPlayerById } from "@/lib/api";
-import { toDisplayCategory, DISPLAY_CATEGORY_LABELS, DISPLAY_CATEGORY_COLORS } from "@/lib/constants";
+import { CATEGORY_LABELS, CATEGORY_COLORS } from "@/lib/constants";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 
 type Props = {
@@ -14,10 +14,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const player = await getPlayerById(id);
   if (!player) return { title: "メンバーが見つかりません" };
-  const dc = toDisplayCategory(player.category);
   return {
     title: player.name,
-    description: `NEOS E-SPORTS ${DISPLAY_CATEGORY_LABELS[dc]} ${player.name}`,
+    description: `NEOS E-SPORTS ${CATEGORY_LABELS[player.category]} ${player.name}`,
   };
 }
 
@@ -27,7 +26,6 @@ export default async function MemberDetailPage({ params }: Props) {
 
   if (!player) notFound();
 
-  const dc = toDisplayCategory(player.category);
   const primaryImage = player.images.find((img) => img.is_primary);
   const otherImages = player.images.filter((img) => !img.is_primary);
 
@@ -82,9 +80,9 @@ export default async function MemberDetailPage({ params }: Props) {
           <AnimateIn delay={0.2}>
             <div>
               <span
-                className={`inline-block text-xs px-3 py-1 rounded-sm mb-4 ${DISPLAY_CATEGORY_COLORS[dc]}`}
+                className={`inline-block text-xs px-3 py-1 rounded-sm mb-4 ${CATEGORY_COLORS[player.category]}`}
               >
-                {DISPLAY_CATEGORY_LABELS[dc]}
+                {CATEGORY_LABELS[player.category]}
               </span>
 
               <h1 className="font-heading text-4xl md:text-5xl tracking-wider text-white mb-1">

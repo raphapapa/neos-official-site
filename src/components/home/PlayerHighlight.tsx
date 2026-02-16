@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { toDisplayCategory, DISPLAY_CATEGORY_LABELS, DISPLAY_CATEGORY_COLORS, sortMembers } from "@/lib/constants";
+import { CATEGORY_LABELS, CATEGORY_COLORS, sortMembers } from "@/lib/constants";
 import type { Player } from "@/lib/types";
 
 type Props = {
@@ -23,9 +23,7 @@ export function PlayerHighlight({ players }: Props) {
         </AnimateIn>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-          {featured.map((player, i) => {
-            const dc = toDisplayCategory(player.category);
-            return (
+          {featured.map((player, i) => (
               <AnimateIn key={player.id} delay={0.1 * i}>
                 <Link href={`/members/${player.id}`} className="group block">
                   <div className="relative aspect-[3/4] overflow-hidden bg-card rounded-sm">
@@ -50,10 +48,10 @@ export function PlayerHighlight({ players }: Props) {
                     <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
                       <span
                         className={`inline-block text-[10px] px-2 py-0.5 rounded-sm mb-2 ${
-                          DISPLAY_CATEGORY_COLORS[dc]
+                          CATEGORY_COLORS[player.category]
                         }`}
                       >
-                        {DISPLAY_CATEGORY_LABELS[dc]}
+                        {CATEGORY_LABELS[player.category]}
                       </span>
                       <h3 className="font-heading text-xl sm:text-2xl tracking-wider text-white">
                         {player.name}
@@ -62,8 +60,7 @@ export function PlayerHighlight({ players }: Props) {
                   </div>
                 </Link>
               </AnimateIn>
-            );
-          })}
+            ))}
         </div>
 
         <AnimateIn delay={0.3}>
