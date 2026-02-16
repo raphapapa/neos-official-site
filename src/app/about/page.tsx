@@ -65,7 +65,17 @@ export default async function AboutPage() {
 
         <AnimateIn delay={0.2}>
           <div className="site-prose">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                img: ({ src, alt }) => (
+                  <span className="block my-6">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src || ""} alt={alt || ""} className="w-full rounded-sm" />
+                  </span>
+                ),
+              }}
+            >
               {aboutText}
             </ReactMarkdown>
           </div>
