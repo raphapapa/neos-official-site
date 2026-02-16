@@ -98,8 +98,13 @@ export function PlayerFilter({ players }: Props) {
                     {CATEGORY_LABELS[player.category]}
                   </span>
                   <h3 className="font-heading text-lg sm:text-xl tracking-wider text-white">
-                    {player.name}
+                    {player.name_en || player.name}
                   </h3>
+                  {player.name_en && (
+                    <p className="text-sub-text text-[11px] tracking-wide">
+                      {player.name}
+                    </p>
+                  )}
                 </div>
               </div>
             </Link>

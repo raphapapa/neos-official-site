@@ -14,9 +14,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const player = await getPlayerById(id);
   if (!player) return { title: "メンバーが見つかりません" };
+  const displayName = player.name_en || player.name;
   return {
-    title: player.name,
-    description: `NEOS E-SPORTS ${CATEGORY_LABELS[player.category]} ${player.name}`,
+    title: displayName,
+    description: `NEOS E-SPORTS ${CATEGORY_LABELS[player.category]} ${displayName}`,
   };
 }
 
@@ -86,11 +87,11 @@ export default async function MemberDetailPage({ params }: Props) {
               </span>
 
               <h1 className="font-heading text-4xl md:text-5xl tracking-wider text-white mb-1">
-                {player.name}
+                {player.name_en || player.name}
               </h1>
               {player.name_en && (
                 <p className="text-sub-text text-sm tracking-wider mb-6">
-                  {player.name_en}
+                  {player.name}
                 </p>
               )}
 
