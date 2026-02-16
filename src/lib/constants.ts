@@ -113,21 +113,41 @@ export const ARTICLE_CATEGORY_COLORS: Record<ArticleCategory, string> = {
   RESULT: "bg-amber-700/80 text-white",
 };
 
-// メンバーのソート（PR昇順、PRなしは名前昇順で後ろ）
+// 選手カテゴリの表示順: ATHLETE → GROWTH → YOUTH → JUNIOR → STAFF
+const PLAYER_CATEGORY_ORDER: Record<string, number> = {
+  ATHLETE: 0,
+  GROWTH: 1,
+  YOUTH: 2,
+  JUNIOR: 3,
+};
+
+// メンバーのソート
+// 1. カテゴリ順 (ATHLETE → GROWTH → YOUTH → JUNIOR → STAFF)
+// 2. 同カテゴリ内: PR昇順
+// 3. PRなし: 名前昇順で後ろ
 export function sortMembers<T extends { pr_rank: number | null; name: string; category: PlayerCategory }>(players: T[]): T[] {
   return [...players].sort((a, b) => {
-    // STAFFはまとめて後ろ、STAFFの中はSTAFF_SORT_ORDERで並ぶ
     const aIsStaff = STAFF_CATEGORIES.includes(a.category);
     const bIsStaff = STAFF_CATEGORIES.includes(b.category);
+
+    // STAFFはまとめて後ろ
     if (aIsStaff && !bIsStaff) return 1;
     if (!aIsStaff && bIsStaff) return -1;
+
+    // STAFF同士: 役職順 → 名前順
     if (aIsStaff && bIsStaff) {
       const aOrder = STAFF_SORT_ORDER[a.category] ?? 99;
       const bOrder = STAFF_SORT_ORDER[b.category] ?? 99;
       if (aOrder !== bOrder) return aOrder - bOrder;
       return a.name.localeCompare(b.name, "ja");
     }
-    // 選手: PR昇順、PRなしは名前昇順で後ろ
+
+    // 選手同士: カテゴリ順
+    const aCatOrder = PLAYER_CATEGORY_ORDER[a.category] ?? 99;
+    const bCatOrder = PLAYER_CATEGORY_ORDER[b.category] ?? 99;
+    if (aCatOrder !== bCatOrder) return aCatOrder - bCatOrder;
+
+    // 同カテゴリ内: PR昇順、PRなしは名前昇順で後ろ
     if (a.pr_rank && b.pr_rank) return a.pr_rank - b.pr_rank;
     if (a.pr_rank && !b.pr_rank) return -1;
     if (!a.pr_rank && b.pr_rank) return 1;
