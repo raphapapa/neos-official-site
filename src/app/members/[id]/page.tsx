@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getPlayerById } from "@/lib/api";
-import { CATEGORY_LABELS, CATEGORY_COLORS } from "@/lib/constants";
+import { toDisplayCategory, DISPLAY_CATEGORY_LABELS, DISPLAY_CATEGORY_COLORS } from "@/lib/constants";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 
 type Props = {
@@ -13,31 +13,32 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const player = await getPlayerById(id);
-  if (!player) return { title: "選手が見つかりません" };
+  if (!player) return { title: "メンバーが見つかりません" };
+  const dc = toDisplayCategory(player.category);
   return {
     title: player.name,
-    description: `NEOS E-SPORTS ${CATEGORY_LABELS[player.category]} ${player.name}のプロフィール`,
+    description: `NEOS E-SPORTS ${DISPLAY_CATEGORY_LABELS[dc]} ${player.name}`,
   };
 }
 
-export default async function PlayerDetailPage({ params }: Props) {
+export default async function MemberDetailPage({ params }: Props) {
   const { id } = await params;
   const player = await getPlayerById(id);
 
   if (!player) notFound();
 
+  const dc = toDisplayCategory(player.category);
   const primaryImage = player.images.find((img) => img.is_primary);
   const otherImages = player.images.filter((img) => !img.is_primary);
 
   return (
     <div className="pt-28 pb-24 px-4">
       <div className="max-w-5xl mx-auto">
-        {/* Back link */}
         <Link
-          href="/players"
+          href="/members"
           className="inline-block text-sub-text hover:text-white text-sm mb-8 transition-colors"
         >
-          ← 選手一覧に戻る
+          ← MEMBERS
         </Link>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -62,7 +63,6 @@ export default async function PlayerDetailPage({ params }: Props) {
                 )}
               </div>
 
-              {/* Sub images */}
               {otherImages.length > 0 && (
                 <div className="grid grid-cols-4 gap-2">
                   {otherImages.map((img) => (
@@ -70,12 +70,7 @@ export default async function PlayerDetailPage({ params }: Props) {
                       key={img.id}
                       className="relative aspect-square overflow-hidden bg-card rounded-sm"
                     >
-                      <Image
-                        src={img.url}
-                        alt=""
-                        fill
-                        className="object-cover"
-                      />
+                      <Image src={img.url} alt="" fill className="object-cover" />
                     </div>
                   ))}
                 </div>
@@ -86,16 +81,12 @@ export default async function PlayerDetailPage({ params }: Props) {
           {/* Info */}
           <AnimateIn delay={0.2}>
             <div>
-              {/* Category badge */}
               <span
-                className={`inline-block text-xs px-3 py-1 rounded-sm mb-4 ${
-                  CATEGORY_COLORS[player.category] || "bg-gray-800 text-gray-300"
-                }`}
+                className={`inline-block text-xs px-3 py-1 rounded-sm mb-4 ${DISPLAY_CATEGORY_COLORS[dc]}`}
               >
-                {CATEGORY_LABELS[player.category]}
+                {DISPLAY_CATEGORY_LABELS[dc]}
               </span>
 
-              {/* Name */}
               <h1 className="font-heading text-4xl md:text-5xl tracking-wider text-white mb-1">
                 {player.name}
               </h1>
@@ -105,11 +96,10 @@ export default async function PlayerDetailPage({ params }: Props) {
                 </p>
               )}
 
-              {/* Stats */}
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {player.jersey_number && (
                   <div className="bg-card p-4 rounded-sm">
-                    <p className="text-sub-text text-xs mb-1">背番号</p>
+                    <p className="text-sub-text text-xs mb-1">NO.</p>
                     <p className="font-heading text-2xl text-white">
                       #{player.jersey_number}
                     </p>
@@ -117,7 +107,7 @@ export default async function PlayerDetailPage({ params }: Props) {
                 )}
                 {player.pr_rank && (
                   <div className="bg-card p-4 rounded-sm">
-                    <p className="text-sub-text text-xs mb-1">PR順位</p>
+                    <p className="text-sub-text text-xs mb-1">PR RANK</p>
                     <p className="font-heading text-2xl text-neos-red">
                       #{player.pr_rank.toLocaleString()}
                     </p>
@@ -125,7 +115,7 @@ export default async function PlayerDetailPage({ params }: Props) {
                 )}
                 {player.earnings != null && player.earnings > 0 && (
                   <div className="bg-card p-4 rounded-sm">
-                    <p className="text-sub-text text-xs mb-1">賞金</p>
+                    <p className="text-sub-text text-xs mb-1">EARNINGS</p>
                     <p className="font-heading text-2xl text-white">
                       ${player.earnings.toLocaleString()}
                     </p>
@@ -133,7 +123,7 @@ export default async function PlayerDetailPage({ params }: Props) {
                 )}
                 {player.join_date && (
                   <div className="bg-card p-4 rounded-sm">
-                    <p className="text-sub-text text-xs mb-1">入団日</p>
+                    <p className="text-sub-text text-xs mb-1">JOINED</p>
                     <p className="text-white text-sm">
                       {new Date(player.join_date).toLocaleDateString("ja-JP")}
                     </p>
@@ -141,7 +131,6 @@ export default async function PlayerDetailPage({ params }: Props) {
                 )}
               </div>
 
-              {/* Profile */}
               {player.profile && (
                 <div className="mb-6">
                   <h2 className="font-heading text-lg tracking-wider text-white mb-2">
@@ -153,7 +142,6 @@ export default async function PlayerDetailPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Achievements */}
               {player.achievements && (
                 <div className="mb-6">
                   <h2 className="font-heading text-lg tracking-wider text-white mb-2">
@@ -165,7 +153,6 @@ export default async function PlayerDetailPage({ params }: Props) {
                 </div>
               )}
 
-              {/* X Account */}
               {player.x_account && (
                 <a
                   href={`https://x.com/${player.x_account}`}
@@ -173,11 +160,7 @@ export default async function PlayerDetailPage({ params }: Props) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sub-text hover:text-white transition-colors text-sm"
                 >
-                  <svg
-                    className="w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                   @{player.x_account}
@@ -187,7 +170,6 @@ export default async function PlayerDetailPage({ params }: Props) {
           </AnimateIn>
         </div>
 
-        {/* Tournament results */}
         {player.tournament_results.length > 0 && (
           <AnimateIn delay={0.3}>
             <div className="mt-16">
@@ -198,41 +180,28 @@ export default async function PlayerDetailPage({ params }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-border text-sub-text">
-                      <th className="text-left py-3 pr-4 font-medium">大会名</th>
-                      <th className="text-left py-3 pr-4 font-medium">日付</th>
-                      <th className="text-right py-3 pr-4 font-medium">順位</th>
-                      <th className="text-right py-3 pr-4 font-medium">キル</th>
-                      <th className="text-right py-3 font-medium">賞金</th>
+                      <th className="text-left py-3 pr-4 font-medium">TOURNAMENT</th>
+                      <th className="text-left py-3 pr-4 font-medium">DATE</th>
+                      <th className="text-right py-3 pr-4 font-medium">PLACE</th>
+                      <th className="text-right py-3 pr-4 font-medium">KILLS</th>
+                      <th className="text-right py-3 font-medium">PRIZE</th>
                     </tr>
                   </thead>
                   <tbody>
                     {player.tournament_results.map((t, i) => (
-                      <tr
-                        key={i}
-                        className="border-b border-border/50 hover:bg-card/50"
-                      >
-                        <td className="py-3 pr-4 text-white">
-                          {t.tournament_name}
-                        </td>
+                      <tr key={i} className="border-b border-border/50 hover:bg-card/50">
+                        <td className="py-3 pr-4 text-white">{t.tournament_name}</td>
                         <td className="py-3 pr-4 text-sub-text">
                           {new Date(t.tournament_date).toLocaleDateString("ja-JP")}
                         </td>
                         <td className="py-3 pr-4 text-right">
                           {t.placement != null && (
-                            <span
-                              className={
-                                t.placement <= 3
-                                  ? "text-neos-red font-bold"
-                                  : "text-white"
-                              }
-                            >
+                            <span className={t.placement <= 3 ? "text-neos-red font-bold" : "text-white"}>
                               #{t.placement}
                             </span>
                           )}
                         </td>
-                        <td className="py-3 pr-4 text-right text-sub-text">
-                          {t.kills ?? "-"}
-                        </td>
+                        <td className="py-3 pr-4 text-right text-sub-text">{t.kills ?? "-"}</td>
                         <td className="py-3 text-right text-white">
                           {t.prize ? `$${t.prize.toLocaleString()}` : "-"}
                         </td>

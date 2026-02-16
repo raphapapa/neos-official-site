@@ -1,21 +1,49 @@
 import type { PlayerCategory, ArticleCategory, SponsorTier } from "./types";
 
+// サイト表示用カテゴリ（5つに集約）
+export type DisplayCategory = "ATHLETE" | "GROWTH" | "YOUTH" | "JUNIOR" | "STAFF";
+
+export const DISPLAY_CATEGORY_LABELS: Record<DisplayCategory, string> = {
+  ATHLETE: "ATHLETE",
+  GROWTH: "GROWTH",
+  YOUTH: "YOUTH",
+  JUNIOR: "JUNIOR",
+  STAFF: "STAFF",
+};
+
+// DB category → 表示カテゴリへのマッピング
+const STAFF_CATEGORIES: PlayerCategory[] = [
+  "OWNER", "OPERATOR", "OPERATOR_SUPPORT", "OPERATOR_INTERN",
+  "JUNIOR_MANAGER", "JUNIOR_SUB_MANAGER",
+  "DESIGNER", "EDITOR", "STREAMER",
+];
+
+export function toDisplayCategory(cat: PlayerCategory): DisplayCategory {
+  if (cat === "ATHLETE" || cat === "GROWTH" || cat === "YOUTH" || cat === "JUNIOR") return cat;
+  if (STAFF_CATEGORIES.includes(cat)) return "STAFF";
+  return "STAFF";
+}
+
+export const DISPLAY_CATEGORY_ORDER: DisplayCategory[] = [
+  "ATHLETE", "GROWTH", "YOUTH", "JUNIOR", "STAFF",
+];
+
 export const CATEGORY_LABELS: Record<PlayerCategory, string> = {
-  ATHLETE: "アスリート",
-  GROWTH: "育成",
-  YOUTH: "ユース",
-  JUNIOR: "ジュニア",
-  OWNER: "オーナー",
-  OPERATOR: "運営",
-  OPERATOR_SUPPORT: "運営サポート",
-  OPERATOR_INTERN: "運営インターン",
-  JUNIOR_MANAGER: "ジュニアマネージャー",
-  JUNIOR_SUB_MANAGER: "ジュニアサブマネージャー",
-  DESIGNER: "デザイナー",
-  EDITOR: "エディター",
-  STREAMER: "ストリーマー",
-  TRYOUT: "トライアウト",
-  SUSPENDED: "休止中",
+  ATHLETE: "ATHLETE",
+  GROWTH: "GROWTH",
+  YOUTH: "YOUTH",
+  JUNIOR: "JUNIOR",
+  OWNER: "STAFF",
+  OPERATOR: "STAFF",
+  OPERATOR_SUPPORT: "STAFF",
+  OPERATOR_INTERN: "STAFF",
+  JUNIOR_MANAGER: "STAFF",
+  JUNIOR_SUB_MANAGER: "STAFF",
+  DESIGNER: "STAFF",
+  EDITOR: "STAFF",
+  STREAMER: "STAFF",
+  TRYOUT: "TRYOUT",
+  SUSPENDED: "SUSPENDED",
 };
 
 export const PUBLIC_CATEGORIES: PlayerCategory[] = [
@@ -30,30 +58,38 @@ export const CATEGORY_COLORS: Record<PlayerCategory, string> = {
   GROWTH: "bg-amber-900/60 text-amber-300 border border-amber-700",
   YOUTH: "bg-sky-900/60 text-sky-300 border border-sky-700",
   JUNIOR: "bg-emerald-900/60 text-emerald-300 border border-emerald-700",
-  OWNER: "bg-purple-900/60 text-purple-300 border border-purple-700",
+  OWNER: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
   OPERATOR: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
   OPERATOR_SUPPORT: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
   OPERATOR_INTERN: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
-  JUNIOR_MANAGER: "bg-teal-900/60 text-teal-300 border border-teal-700",
-  JUNIOR_SUB_MANAGER: "bg-teal-900/60 text-teal-300 border border-teal-700",
-  DESIGNER: "bg-pink-900/60 text-pink-300 border border-pink-700",
-  EDITOR: "bg-orange-900/60 text-orange-300 border border-orange-700",
-  STREAMER: "bg-violet-900/60 text-violet-300 border border-violet-700",
+  JUNIOR_MANAGER: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
+  JUNIOR_SUB_MANAGER: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
+  DESIGNER: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
+  EDITOR: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
+  STREAMER: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
   TRYOUT: "bg-gray-900/60 text-gray-300 border border-gray-700",
   SUSPENDED: "bg-gray-900/60 text-gray-400 border border-gray-700",
 };
 
+export const DISPLAY_CATEGORY_COLORS: Record<DisplayCategory, string> = {
+  ATHLETE: "bg-red-900/60 text-red-300 border border-red-700",
+  GROWTH: "bg-amber-900/60 text-amber-300 border border-amber-700",
+  YOUTH: "bg-sky-900/60 text-sky-300 border border-sky-700",
+  JUNIOR: "bg-emerald-900/60 text-emerald-300 border border-emerald-700",
+  STAFF: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
+};
+
 export const SPONSOR_TIER_LABELS: Record<SponsorTier, string> = {
-  GOLD: "ゴールドスポンサー",
-  SILVER: "シルバースポンサー",
-  BRONZE: "ブロンズスポンサー",
-  STANDARD: "スポンサー",
+  GOLD: "GOLD",
+  SILVER: "SILVER",
+  BRONZE: "BRONZE",
+  STANDARD: "STANDARD",
 };
 
 export const ARTICLE_CATEGORY_LABELS: Record<ArticleCategory, string> = {
-  NEWS: "お知らせ",
-  BLOG: "ブログ",
-  RESULT: "大会結果",
+  NEWS: "NEWS",
+  BLOG: "BLOG",
+  RESULT: "RESULT",
 };
 
 export const ARTICLE_CATEGORY_COLORS: Record<ArticleCategory, string> = {
@@ -61,3 +97,13 @@ export const ARTICLE_CATEGORY_COLORS: Record<ArticleCategory, string> = {
   BLOG: "bg-blue-700/80 text-white",
   RESULT: "bg-amber-700/80 text-white",
 };
+
+// メンバーのソート（PR昇順、PRなしは名前昇順で後ろ）
+export function sortMembers<T extends { pr_rank: number | null; name: string }>(players: T[]): T[] {
+  return [...players].sort((a, b) => {
+    if (a.pr_rank && b.pr_rank) return a.pr_rank - b.pr_rank;
+    if (a.pr_rank && !b.pr_rank) return -1;
+    if (!a.pr_rank && b.pr_rank) return 1;
+    return a.name.localeCompare(b.name, "ja");
+  });
+}

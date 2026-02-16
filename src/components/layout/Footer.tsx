@@ -1,9 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const NAV_ITEMS = [
-  { href: "/about", label: "ABOUT" },
-  { href: "/players", label: "PLAYERS" },
   { href: "/news", label: "NEWS" },
+  { href: "/members", label: "MEMBERS" },
+  { href: "/about", label: "ABOUT" },
+  { href: "/scrim", label: "SCRIM" },
+  { href: "/store", label: "STORE" },
+  { href: "/partners", label: "PARTNERS" },
   { href: "/contact", label: "CONTACT" },
 ];
 
@@ -13,13 +17,14 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="flex flex-col items-center gap-8">
           {/* Logo */}
-          <Link href="/" className="flex flex-col items-center gap-1">
-            <span className="font-heading text-3xl tracking-wider text-white">
-              NEOS
-            </span>
-            <span className="text-[10px] text-sub-text tracking-[0.3em]">
-              E-SPORTS
-            </span>
+          <Link href="/" className="flex flex-col items-center gap-2">
+            <Image
+              src="/images/logo/logo_01.png"
+              alt="NEOS E-SPORTS"
+              width={48}
+              height={48}
+              className="invert brightness-200"
+            />
           </Link>
 
           {/* Tagline */}

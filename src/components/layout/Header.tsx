@@ -1,13 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const NAV_ITEMS = [
-  { href: "/about", label: "ABOUT" },
-  { href: "/players", label: "PLAYERS" },
   { href: "/news", label: "NEWS" },
+  { href: "/members", label: "MEMBERS" },
+  { href: "/about", label: "ABOUT" },
+  { href: "/scrim", label: "SCRIM" },
+  { href: "/store", label: "STORE" },
+  { href: "/partners", label: "PARTNERS" },
   { href: "/contact", label: "CONTACT" },
 ];
 
@@ -38,21 +42,22 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="font-heading text-2xl md:text-3xl tracking-wider text-white group-hover:text-neos-red transition-colors">
-              NEOS
-            </span>
-            <span className="hidden sm:block text-[10px] text-sub-text tracking-widest">
-              E-SPORTS
-            </span>
+            <Image
+              src="/images/logo/logo_01.png"
+              alt="NEOS E-SPORTS"
+              width={40}
+              height={40}
+              className="invert brightness-200"
+            />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-heading text-lg tracking-wider transition-colors duration-200 ${
+                className={`font-heading text-base tracking-wider transition-colors duration-200 ${
                   pathname === item.href || pathname?.startsWith(item.href + "/")
                     ? "text-white"
                     : "text-sub-text hover:text-white"
@@ -65,7 +70,7 @@ export function Header() {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden relative w-8 h-8 flex items-center justify-center"
+            className="lg:hidden relative w-8 h-8 flex items-center justify-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="メニュー"
           >
@@ -90,8 +95,8 @@ export function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isMobileMenuOpen ? "max-h-80" : "max-h-0"
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          isMobileMenuOpen ? "max-h-[28rem]" : "max-h-0"
         }`}
       >
         <nav className="px-4 pb-6 flex flex-col gap-4">
