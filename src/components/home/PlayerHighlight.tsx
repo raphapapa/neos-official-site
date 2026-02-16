@@ -56,11 +56,6 @@ export function PlayerHighlight({ players }: Props) {
                       <h3 className="font-heading text-xl sm:text-2xl tracking-wider text-white">
                         {player.name_en || player.name}
                       </h3>
-                      {player.name_en && (
-                        <p className="text-sub-text text-[11px] tracking-wide">
-                          {player.name}
-                        </p>
-                      )}
                     </div>
                   </div>
                 </Link>
