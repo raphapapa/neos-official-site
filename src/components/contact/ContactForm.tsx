@@ -6,8 +6,13 @@ const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3000";
 
 type FormType = "JOIN" | "GENERAL";
 
-export function ContactForm() {
-  const [formType, setFormType] = useState<FormType>("JOIN");
+interface ContactFormProps {
+  enrollmentOpen: boolean;
+  enrollmentClosedMessage: string;
+}
+
+export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: ContactFormProps) {
+  const [formType, setFormType] = useState<FormType>(enrollmentOpen ? "JOIN" : "GENERAL");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -65,17 +70,23 @@ export function ContactForm() {
     <div>
       {/* Type selector */}
       <div className="flex gap-2 mb-8">
-        <button
-          type="button"
-          onClick={() => setFormType("JOIN")}
-          className={`flex-1 py-3 text-sm font-medium rounded-sm transition-colors ${
-            formType === "JOIN"
-              ? "bg-neos-red text-white"
-              : "bg-card text-sub-text hover:text-white"
-          }`}
-        >
-          入隊希望
-        </button>
+        {enrollmentOpen ? (
+          <button
+            type="button"
+            onClick={() => setFormType("JOIN")}
+            className={`flex-1 py-3 text-sm font-medium rounded-sm transition-colors ${
+              formType === "JOIN"
+                ? "bg-neos-red text-white"
+                : "bg-card text-sub-text hover:text-white"
+            }`}
+          >
+            入隊希望
+          </button>
+        ) : (
+          <div className="flex-1 py-3 text-sm font-medium rounded-sm bg-card/50 text-sub-text/50 text-center cursor-not-allowed">
+            入隊希望（受付停止中）
+          </div>
+        )}
         <button
           type="button"
           onClick={() => setFormType("GENERAL")}
@@ -89,7 +100,16 @@ export function ContactForm() {
         </button>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      {/* 入隊受付停止中メッセージ */}
+      {!enrollmentOpen && formType === "JOIN" && (
+        <div className="text-center py-12 px-4 bg-card rounded-sm border border-border">
+          <p className="text-sub-text leading-relaxed whitespace-pre-line">
+            {enrollmentClosedMessage}
+          </p>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className={`space-y-5 ${!enrollmentOpen && formType === "JOIN" ? "hidden" : ""}`}>
         <div>
           <label className="block text-sm text-sub-text mb-1">
             お名前 <span className="text-neos-red">*</span>
