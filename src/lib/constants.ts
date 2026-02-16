@@ -29,7 +29,6 @@ export const DISPLAY_CATEGORY_ORDER: DisplayCategory[] = [
 ];
 
 // カード上のバッジに表示する正式な役職ラベル
-// OPERATOR系・MANAGER系はすべて「OPERATOR」に統一
 export const CATEGORY_LABELS: Record<PlayerCategory, string> = {
   ATHLETE: "ATHLETE",
   GROWTH: "GROWTH",
@@ -37,10 +36,10 @@ export const CATEGORY_LABELS: Record<PlayerCategory, string> = {
   JUNIOR: "JUNIOR",
   OWNER: "OWNER",
   OPERATOR: "OPERATOR",
-  OPERATOR_SUPPORT: "OPERATOR",
-  OPERATOR_INTERN: "OPERATOR",
-  JUNIOR_MANAGER: "OPERATOR",
-  JUNIOR_SUB_MANAGER: "OPERATOR",
+  OPERATOR_SUPPORT: "OPERATOR SUPPORT",
+  OPERATOR_INTERN: "OPERATOR INTERN",
+  JUNIOR_MANAGER: "JUNIOR MANAGER",
+  JUNIOR_SUB_MANAGER: "JUNIOR SUB MANAGER",
   DESIGNER: "DESIGNER",
   EDITOR: "EDITOR",
   STREAMER: "STREAMER",
@@ -56,12 +55,17 @@ export const PUBLIC_CATEGORIES: PlayerCategory[] = [
 ];
 
 // STAFFカテゴリの表示順序
-const STAFF_SORT_ORDER: Record<string, number> = {
+const STAFF_SORT_ORDER: Record<PlayerCategory, number> = {
   OWNER: 0,
   OPERATOR: 1,
-  STREAMER: 2,
-  DESIGNER: 3,
-  EDITOR: 4,
+  OPERATOR_SUPPORT: 2,
+  OPERATOR_INTERN: 3,
+  JUNIOR_MANAGER: 4,
+  JUNIOR_SUB_MANAGER: 5,
+  STREAMER: 6,
+  DESIGNER: 7,
+  EDITOR: 8,
+  ATHLETE: 99, GROWTH: 99, YOUTH: 99, JUNIOR: 99, TRYOUT: 99, SUSPENDED: 99,
 };
 
 export const CATEGORY_COLORS: Record<PlayerCategory, string> = {
@@ -73,8 +77,8 @@ export const CATEGORY_COLORS: Record<PlayerCategory, string> = {
   OPERATOR: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
   OPERATOR_SUPPORT: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
   OPERATOR_INTERN: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
-  JUNIOR_MANAGER: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
-  JUNIOR_SUB_MANAGER: "bg-indigo-900/60 text-indigo-300 border border-indigo-700",
+  JUNIOR_MANAGER: "bg-teal-900/60 text-teal-300 border border-teal-700",
+  JUNIOR_SUB_MANAGER: "bg-teal-900/60 text-teal-300 border border-teal-700",
   DESIGNER: "bg-pink-900/60 text-pink-300 border border-pink-700",
   EDITOR: "bg-orange-900/60 text-orange-300 border border-orange-700",
   STREAMER: "bg-violet-900/60 text-violet-300 border border-violet-700",
@@ -118,10 +122,8 @@ export function sortMembers<T extends { pr_rank: number | null; name: string; ca
     if (aIsStaff && !bIsStaff) return 1;
     if (!aIsStaff && bIsStaff) return -1;
     if (aIsStaff && bIsStaff) {
-      const aLabel = CATEGORY_LABELS[a.category];
-      const bLabel = CATEGORY_LABELS[b.category];
-      const aOrder = STAFF_SORT_ORDER[aLabel] ?? 99;
-      const bOrder = STAFF_SORT_ORDER[bLabel] ?? 99;
+      const aOrder = STAFF_SORT_ORDER[a.category] ?? 99;
+      const bOrder = STAFF_SORT_ORDER[b.category] ?? 99;
       if (aOrder !== bOrder) return aOrder - bOrder;
       return a.name.localeCompare(b.name, "ja");
     }
