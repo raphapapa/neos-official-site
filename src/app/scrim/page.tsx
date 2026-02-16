@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SectionDivider } from "@/components/shared/SectionDivider";
@@ -72,6 +73,15 @@ export default function ScrimPage() {
               </p>
             </div>
 
+            <div className="relative aspect-[16/9] overflow-hidden rounded-sm mb-8">
+              <Image
+                src="https://pbs.twimg.com/media/G_bjkFIa8AAC_kd?format=jpg&name=large"
+                alt="APF SCRIM"
+                fill
+                className="object-cover"
+              />
+            </div>
+
             <div className="flex flex-wrap items-center gap-6 text-sm">
               <span className="bg-card px-4 py-2 rounded-sm text-white font-heading tracking-wider">
                 毎週末
@@ -115,6 +125,15 @@ export default function ScrimPage() {
                 <br />
                 場数が「考える力」と「向き合う力」に変わる
               </p>
+            </div>
+
+            <div className="relative aspect-[16/9] overflow-hidden rounded-sm mb-8">
+              <Image
+                src="https://pbs.twimg.com/media/HBLyQw1akAMnnZX?format=jpg&name=large"
+                alt="JUNIOR SCRIM"
+                fill
+                className="object-cover"
+              />
             </div>
 
             <div className="flex flex-wrap items-center gap-6 text-sm">
