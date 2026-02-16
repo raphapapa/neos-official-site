@@ -5,9 +5,12 @@
 NEOS E-SPORTS（Fortnite中心のeスポーツチーム）の公式公開Webサイト。
 管理アプリ（neos-player-app）の公開APIからデータを取得して表示する。
 
+- **本番URL:** https://neos-official-site.vercel.app
 - **管理アプリリポジトリ:** https://github.com/raphapapa/neos-player-app
 - **管理アプリ本番:** https://neos-player-app.vercel.app
-- **ドメイン（予定）:** neos-esports.com
+- **Vercel Project ID:** prj_UqtlFYUXzBAbFwmMeQbI3uCxqHTE
+- **Vercel Team ID:** team_tl0M0NXPC0hVjsj05g8WOYKe
+- **ドメイン（予定）:** neos-esports.com（未取得）
 
 ## 2台PC体制
 
@@ -100,46 +103,68 @@ API障害時: `lib/api/client.ts` が null を返し、各ページが空表示�
 
 ```
 /                トップ（Hero + About要約 + 選手ハイライト + ニュース + スポンサー）
-/players         選手一覧（カテゴリフィルタ + グリッド）
-/players/[id]    選手詳細（画像ギャラリー + PR順位 + 大会実績 + SNS）
+/members         選手一覧（カテゴリ別セクション + グリッド）
+/members/[id]    選手詳細（画像ギャラリー + PR順位 + 大会実績 + SNS）
 /news            ニュース一覧（カード + カテゴリフィルタ + ページネーション）
 /news/[slug]     記事詳細（Markdownレンダリング）
 /about           チーム概要（site_settingsのabout_text or デフォルトコピー）
+/scrim           スクリム紹介（APF SCRIM + JUNIOR SCRIM、コンセプチュアルコピー）
+/store           ストア（COMING SOON表示）
+/partners        パートナー企業（ティア別ロゴ表示）
 /contact         入隊希望/一般問い合わせフォーム（POST API連携）
 ```
+
+### 選手一覧の表示仕様
+
+- **名前:** 英語名（name_en）を主表示。日本語名は詳細ページのみ
+- **並び順:** ATHLETE → GROWTH → YOUTH → JUNIOR の区分順。同区分内はPR昇順→名前昇順
+- **セクション見出し:** 各カテゴリにコンセプチュアルな英語サブタイトル付き
+- **STAFFカテゴリ:** OWNER/OPERATOR等は個別の役職ラベルをバッジ表示
+
+### SCRIMページ
+
+- テーマ:「続けた先に、強さがある」
+- APF SCRIM: NEOS×APF共同運営、毎週末（@APF0401）、pbs.twimg.com画像付き
+- JUNIOR SCRIM: U13ソロラガ、毎週月・水（@neosclan_u13）、pbs.twimg.com画像付き
+- コピーの方針: 句点（。）不使用、体言止めを適度に、単語の重複を避ける
 
 ## ディレクトリ構造
 
 ```
 src/
 ├── app/                    ← ページ（Next.js App Router）
-│   ├── layout.tsx          ← ルートレイアウト（フォント・Header・Footer）
+│   ├── layout.tsx          ← ルートレイアウト（フォント・Header・Footer、site_settings取得）
 │   ├── page.tsx            ← トップページ
 │   ├── not-found.tsx       ← 404ページ
 │   ├── globals.css         ← グローバルスタイル・@theme・.site-prose
-│   ├── players/            ← 選手一覧・詳細
+│   ├── members/            ← 選手一覧・詳細
 │   ├── news/               ← ニュース一覧・詳細
 │   ├── about/              ← チーム概要
+│   ├── scrim/              ← スクリム紹介（APF SCRIM + JUNIOR SCRIM）
+│   ├── store/              ← ストア（COMING SOON）
+│   ├── partners/           ← パートナー企業
 │   └── contact/            ← お問い合わせ
 ├── components/
-│   ├── layout/             ← Header, Footer
+│   ├── layout/             ← Header, Footer（xUrl + juniorXUrl props受け取り）
 │   ├── shared/             ← AnimateIn, SectionDivider, SectionHeading
 │   ├── home/               ← Hero, AboutPreview, PlayerHighlight, NewsPreview, SponsorSection
-│   ├── player/             ← PlayerFilter
+│   ├── player/             ← PlayerFilter（カテゴリ別セクション表示）
 │   ├── article/            ← ArticleCard
 │   └── contact/            ← ContactForm
 ├── lib/
 │   ├── types.ts            ← 全API型定義
-│   ├── constants.ts        ← カテゴリラベル・カラー・Tier定義
+│   ├── constants.ts        ← カテゴリラベル・カラー・Tier定義・PLAYER_CATEGORY_ORDER・sortMembers
 │   └── api/                ← fetch関数（client.ts + index.ts）
 └── hooks/
     └── useInView.ts        ← Intersection Observer
 ```
 
-## Supabase Storage
+## Supabase Storage / 外部画像
 
 Player Appの画像は Supabase Storage の公開バケットに格納されている。
-`next.config.ts` で `jakaujbhbgoodzmjyxfj.supabase.co` をリモートパターンに許可済み。
+`next.config.ts` で以下をリモートパターンに許可済み:
+- `jakaujbhbgoodzmjyxfj.supabase.co` — Supabase Storage（選手画像等）
+- `pbs.twimg.com` — X(Twitter)メディア（SCRIMページの画像）
 
 ## 公開サイトに載せないデータ（内向き施策）
 
@@ -152,5 +177,27 @@ Player Appの画像は Supabase Storage の公開バケットに格納されて�
 
 ## サイトコピーについて
 
-About ページ等のコピーはアタリ（仮テキスト）。
-ユーザーが後からリライトする予定。site_settings で管理画面から変更可能。
+- About ページのコピーは管理アプリのサイト設定（`about_text`）から変更可能。現在DB登録済み
+- SCRIMページのコピーはハードコード（`src/app/scrim/page.tsx`）。変更はコード修正が必要
+- **句点（。）は使わない** — 必要な場合は改行で対応
+- **体言止めを適度に混ぜる** — ただし多用は禁止
+- **単語の重複を避ける** — 同じ単語が近くに2回出ないよう注意
+
+## site_settings に設定済みの値
+
+| key | value | 設定状態 |
+|-----|-------|---------|
+| hero_title | NEOS E-SPORTS | ✅ DB登録済み |
+| hero_subtitle | eスポーツを通じて 人が本気で成長する環境を | ✅ DB登録済み |
+| hero_image_url | — | ❌ 未設定（グラデーション表示） |
+| about_text | MISSION/VALUES/ACTIVITIES/VISIONの全文 | ✅ DB登録済み |
+| contact_email | — | ❌ 未設定 |
+| x_url | https://x.com/neos_fortnite | ✅ DB登録済み |
+| junior_x_url | https://x.com/neosclan_u13 | ✅ DB登録済み |
+
+## 残タスク
+
+1. チーム内レビュー対応 — フィードバックに基づく修正
+2. ヒーロー画像の作成・設定 — hero_image_url が未設定
+3. contact_email の設定
+4. 独自ドメイン取得 — neos-esports.com → Vercelに設定
