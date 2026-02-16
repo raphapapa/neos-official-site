@@ -41,6 +41,7 @@ export type TournamentResult = {
 export type PlayerDetail = Omit<Player, "image_url"> & {
   join_date: string | null;
   detail_image_scale?: number;
+  detail_image_url?: string | null;
   images: PlayerImage[];
   tournament_results: TournamentResult[];
 };

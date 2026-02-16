@@ -28,6 +28,7 @@ export default async function MemberDetailPage({ params }: Props) {
   if (!player) notFound();
 
   const primaryImage = player.images.find((img) => img.is_primary);
+  const detailSrc = player.detail_image_url || primaryImage?.url;
   const otherImages = player.images.filter((img) => !img.is_primary);
 
   return (
@@ -45,9 +46,9 @@ export default async function MemberDetailPage({ params }: Props) {
           <AnimateIn>
             <div className="space-y-4">
               <div className="relative aspect-square overflow-hidden bg-card rounded-sm">
-                {primaryImage ? (
+                {detailSrc ? (
                   <Image
-                    src={primaryImage.url}
+                    src={detailSrc}
                     alt={player.name}
                     fill
                     className="object-cover"
