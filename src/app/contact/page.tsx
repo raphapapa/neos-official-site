@@ -21,7 +21,7 @@ export default async function ContactPage() {
     <div className="pt-28 pb-24 px-4">
       <div className="max-w-xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="CONTACT" subtitle="お問い合わせ" />
+          <SectionHeading title="CONTACT" subtitle="Contact us" />
         </AnimateIn>
 
         <AnimateIn delay={0.2}>

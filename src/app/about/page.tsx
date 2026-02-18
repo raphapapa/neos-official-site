@@ -60,7 +60,7 @@ export default async function AboutPage() {
     <div className="pt-28 pb-24 px-4">
       <div className="max-w-3xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="ABOUT" subtitle="チーム概要" />
+          <SectionHeading title="ABOUT" subtitle="Who we are" />
         </AnimateIn>
 
         <AnimateIn delay={0.2}>
