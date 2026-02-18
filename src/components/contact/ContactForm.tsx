@@ -227,6 +227,14 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
           <p className="text-red-400 text-sm">{error}</p>
         )}
 
+        <p className="text-xs text-sub-text/60">
+          送信することで、
+          <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-neos-red hover:text-neos-red-bright transition-colors">
+            プライバシーポリシー
+          </a>
+          に同意したものとみなされます。
+        </p>
+
         <button
           type="submit"
           disabled={submitting}

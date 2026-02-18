@@ -82,6 +82,22 @@ export function Footer({ xUrl, juniorXUrl }: Props) {
             )}
           </div>
 
+          {/* Legal */}
+          <div className="flex gap-6">
+            <Link
+              href="/privacy"
+              className="text-xs text-sub-text/60 hover:text-sub-text transition-colors"
+            >
+              プライバシーポリシー
+            </Link>
+            <Link
+              href="/terms"
+              className="text-xs text-sub-text/60 hover:text-sub-text transition-colors"
+            >
+              利用規約
+            </Link>
+          </div>
+
           {/* Copyright */}
           <p className="text-xs text-sub-text/60">
             &copy; {new Date().getFullYear()} NEOS E-SPORTS. All rights
