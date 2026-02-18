@@ -35,7 +35,7 @@ export default async function ArticleDetailPage({ params }: Props) {
           href="/news"
           className="inline-block text-sub-text hover:text-white text-sm mb-8 transition-colors"
         >
-          ← お知らせ一覧に戻る
+          ← BACK TO NEWS
         </Link>
 
         <AnimateIn>

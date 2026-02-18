@@ -32,7 +32,7 @@ export default async function NewsPage({ searchParams }: Props) {
     <div className="pt-28 pb-24 px-4">
       <div className="max-w-7xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="NEWS" subtitle="お知らせ" />
+          <SectionHeading title="NEWS" subtitle="Latest updates" />
         </AnimateIn>
 
         {/* Category filter */}
@@ -72,7 +72,7 @@ export default async function NewsPage({ searchParams }: Props) {
           </div>
         ) : (
           <p className="text-center text-sub-text py-16">
-            記事がありません
+            No articles found
           </p>
         )}
 
@@ -84,7 +84,7 @@ export default async function NewsPage({ searchParams }: Props) {
                 href={`/news?page=${page - 1}${category ? `&category=${category}` : ""}`}
                 className="text-sm text-sub-text hover:text-white transition-colors border border-border px-4 py-2 rounded-sm"
               >
-                ← 前へ
+                ← PREV
               </Link>
             )}
             <span className="text-sm text-sub-text">
@@ -95,7 +95,7 @@ export default async function NewsPage({ searchParams }: Props) {
                 href={`/news?page=${page + 1}${category ? `&category=${category}` : ""}`}
                 className="text-sm text-sub-text hover:text-white transition-colors border border-border px-4 py-2 rounded-sm"
               >
-                次へ →
+                NEXT →
               </Link>
             )}
           </div>

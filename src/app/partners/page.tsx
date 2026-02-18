@@ -26,7 +26,7 @@ export default async function PartnersPage() {
     <div className="pt-28 pb-24 px-4">
       <div className="max-w-5xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="PARTNERS" subtitle="パートナー" />
+          <SectionHeading title="PARTNERS" subtitle="Our partners" />
         </AnimateIn>
 
         {grouped.length > 0 ? (
@@ -66,7 +66,7 @@ export default async function PartnersPage() {
           ))
         ) : (
           <p className="text-center text-sub-text py-16">
-            パートナー情報は準備中です
+            Partner information coming soon
           </p>
         )}
 
@@ -76,9 +76,9 @@ export default async function PartnersPage() {
               PARTNERSHIP
             </h3>
             <p className="text-sub-text text-sm mb-6 leading-relaxed">
-              NEOS E-SPORTSとのパートナーシップにご興味のある企業様は、
+              Interested in partnering with NEOS E-SPORTS?
               <br className="hidden sm:block" />
-              お気軽にお問い合わせください。
+              We&apos;d love to hear from you.
             </p>
             <a
               href="/contact"

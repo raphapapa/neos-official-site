@@ -7,7 +7,7 @@ export function AboutPreview() {
     <section className="py-24 px-4">
       <div className="max-w-4xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="ABOUT" subtitle="チームについて" />
+          <SectionHeading title="ABOUT" subtitle="About us" />
         </AnimateIn>
 
         <AnimateIn delay={0.2}>

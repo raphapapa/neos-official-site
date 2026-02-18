@@ -16,7 +16,7 @@ export default async function MembersPage() {
     <div className="pt-28 pb-24 px-4">
       <div className="max-w-7xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="MEMBERS" subtitle="メンバー紹介" />
+          <SectionHeading title="MEMBERS" subtitle="Meet our members" />
         </AnimateIn>
 
         <PlayerFilter players={players} />

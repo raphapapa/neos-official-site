@@ -23,7 +23,7 @@ export function SponsorSection({ sponsors }: Props) {
     <section className="py-24 px-4">
       <div className="max-w-5xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="PARTNERS" subtitle="パートナー" />
+          <SectionHeading title="PARTNERS" subtitle="Our partners" />
         </AnimateIn>
 
         {grouped.map((group) => (

@@ -12,16 +12,16 @@ export default function StorePage() {
     <div className="pt-28 pb-24 px-4">
       <div className="max-w-3xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="STORE" subtitle="ストア" />
+          <SectionHeading title="STORE" subtitle="Official store" />
         </AnimateIn>
 
         <AnimateIn delay={0.2}>
           <div className="text-center text-sub-text py-16">
             <p className="text-lg mb-4">COMING SOON</p>
             <p className="text-sm leading-relaxed">
-              オフィシャルグッズストアは準備中です。
+              Official merchandise store is coming soon.
               <br />
-              オープン時にはこちらでお知らせいたします。
+              Stay tuned for updates.
             </p>
           </div>
         </AnimateIn>

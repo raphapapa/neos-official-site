@@ -19,7 +19,7 @@ export function PlayerHighlight({ players }: Props) {
     <section className="py-24 px-4">
       <div className="max-w-7xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="MEMBERS" subtitle="メンバー紹介" />
+          <SectionHeading title="MEMBERS" subtitle="Meet our members" />
         </AnimateIn>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">

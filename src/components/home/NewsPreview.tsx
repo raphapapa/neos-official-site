@@ -16,7 +16,7 @@ export function NewsPreview({ articles }: Props) {
     <section className="py-24 px-4">
       <div className="max-w-7xl mx-auto">
         <AnimateIn>
-          <SectionHeading title="NEWS" subtitle="お知らせ" />
+          <SectionHeading title="NEWS" subtitle="Latest updates" />
         </AnimateIn>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
