@@ -76,9 +76,9 @@ export default async function PartnersPage() {
               PARTNERSHIP
             </h3>
             <p className="text-sub-text text-sm mb-6 leading-relaxed">
-              Interested in partnering with NEOS E-SPORTS?
+              NEOS E-SPORTSとのパートナーシップにご興味のある企業様は、
               <br className="hidden sm:block" />
-              We&apos;d love to hear from you.
+              お気軽にお問い合わせください。
             </p>
             <a
               href="/contact"
