@@ -43,7 +43,7 @@ export default async function RootLayout({
       <body
         className={`${notoSansJP.variable} ${bebasNeue.variable} antialiased`}
       >
-        <Header />
+        <Header hiddenItems={(settings.nav_hidden_items || '').split(',').map(s => s.trim()).filter(Boolean)} />
         <main className="min-h-screen">{children}</main>
         <Footer
           xUrl={settings.x_url}

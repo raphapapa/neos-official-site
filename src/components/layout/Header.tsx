@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
-const NAV_ITEMS = [
+const ALL_NAV_ITEMS = [
   { href: "/news", label: "NEWS" },
   { href: "/members", label: "MEMBERS" },
   { href: "/about", label: "ABOUT" },
@@ -15,7 +15,8 @@ const NAV_ITEMS = [
   { href: "/contact", label: "CONTACT" },
 ];
 
-export function Header() {
+export function Header({ hiddenItems = [] }: { hiddenItems?: string[] }) {
+  const NAV_ITEMS = ALL_NAV_ITEMS.filter(item => !hiddenItems.includes(item.label));
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
