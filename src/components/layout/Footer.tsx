@@ -88,13 +88,13 @@ export function Footer({ xUrl, juniorXUrl }: Props) {
               href="/privacy"
               className="text-xs text-sub-text/60 hover:text-sub-text transition-colors"
             >
-              プライバシーポリシー
+              PRIVACY POLICY
             </Link>
             <Link
               href="/terms"
               className="text-xs text-sub-text/60 hover:text-sub-text transition-colors"
             >
-              利用規約
+              TERMS OF SERVICE
             </Link>
           </div>
 
