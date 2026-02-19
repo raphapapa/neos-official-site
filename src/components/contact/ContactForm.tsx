@@ -28,7 +28,7 @@ const TRACKER_REQUIRED_DIVISIONS = [
 const DEVICES = ["PC", "PS4・PS5・XBOX", "スイッチ", "その他"];
 
 export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: ContactFormProps) {
-  const [formType, setFormType] = useState<FormType>(enrollmentOpen ? "JOIN" : "GENERAL");
+  const [formType, setFormType] = useState<FormType>("GENERAL");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -177,6 +177,17 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
     <div>
       {/* Type selector */}
       <div className="flex gap-2 mb-8">
+        <button
+          type="button"
+          onClick={() => setFormType("GENERAL")}
+          className={`flex-1 py-3 text-sm font-medium rounded-sm transition-colors ${
+            formType === "GENERAL"
+              ? "bg-neos-red text-white"
+              : "bg-card text-sub-text hover:text-white"
+          }`}
+        >
+          一般お問い合わせ
+        </button>
         {enrollmentOpen ? (
           <button
             type="button"
@@ -194,17 +205,6 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
             入隊希望（受付停止中）
           </div>
         )}
-        <button
-          type="button"
-          onClick={() => setFormType("GENERAL")}
-          className={`flex-1 py-3 text-sm font-medium rounded-sm transition-colors ${
-            formType === "GENERAL"
-              ? "bg-neos-red text-white"
-              : "bg-card text-sub-text hover:text-white"
-          }`}
-        >
-          一般お問い合わせ
-        </button>
       </div>
 
       {/* 入隊受付停止中メッセージ */}
