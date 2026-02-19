@@ -1,5 +1,16 @@
 import type { PlayerCategory, ArticleCategory, SponsorTier } from "./types";
 
+// サイトナビゲーション
+export const NAV_ITEMS = [
+  { href: "/news", label: "NEWS" },
+  { href: "/members", label: "MEMBERS" },
+  { href: "/about", label: "ABOUT" },
+  { href: "/scrim", label: "SCRIM" },
+  { href: "/store", label: "STORE" },
+  { href: "/partners", label: "PARTNERS" },
+  { href: "/contact", label: "CONTACT" },
+];
+
 // フィルタメニュー用カテゴリ（5つに集約）
 export type DisplayCategory = "ATHLETE" | "GROWTH" | "YOUTH" | "JUNIOR" | "STAFF";
 

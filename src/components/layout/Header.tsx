@@ -4,19 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useTransition } from "react";
-
-const ALL_NAV_ITEMS = [
-  { href: "/news", label: "NEWS" },
-  { href: "/members", label: "MEMBERS" },
-  { href: "/about", label: "ABOUT" },
-  { href: "/scrim", label: "SCRIM" },
-  { href: "/store", label: "STORE" },
-  { href: "/partners", label: "PARTNERS" },
-  { href: "/contact", label: "CONTACT" },
-];
+import { NAV_ITEMS } from "@/lib/constants";
 
 export function Header({ hiddenItems = [] }: { hiddenItems?: string[] }) {
-  const NAV_ITEMS = ALL_NAV_ITEMS.filter(item => !hiddenItems.includes(item.label));
+  const filteredNavItems = NAV_ITEMS.filter(item => !hiddenItems.includes(item.label));
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -55,7 +46,7 @@ export function Header({ hiddenItems = [] }: { hiddenItems?: string[] }) {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {NAV_ITEMS.map((item) => (
+            {filteredNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -102,7 +93,7 @@ export function Header({ hiddenItems = [] }: { hiddenItems?: string[] }) {
         }`}
       >
         <nav className="px-4 pb-6 flex flex-col gap-4">
-          {NAV_ITEMS.map((item) => (
+          {filteredNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}

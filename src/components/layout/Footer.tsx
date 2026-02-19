@@ -1,15 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-const ALL_NAV_ITEMS = [
-  { href: "/news", label: "NEWS" },
-  { href: "/members", label: "MEMBERS" },
-  { href: "/about", label: "ABOUT" },
-  { href: "/scrim", label: "SCRIM" },
-  { href: "/store", label: "STORE" },
-  { href: "/partners", label: "PARTNERS" },
-  { href: "/contact", label: "CONTACT" },
-];
+import { NAV_ITEMS } from "@/lib/constants";
 
 const X_ICON = (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -24,7 +15,7 @@ type Props = {
 };
 
 export function Footer({ xUrl, juniorXUrl, hiddenItems = [] }: Props) {
-  const NAV_ITEMS = ALL_NAV_ITEMS.filter(item => !hiddenItems.includes(item.label));
+  const filteredNavItems = NAV_ITEMS.filter(item => !hiddenItems.includes(item.label));
   const mainX = xUrl || "https://x.com/neos_esports";
 
   return (
@@ -49,7 +40,7 @@ export function Footer({ xUrl, juniorXUrl, hiddenItems = [] }: Props) {
 
           {/* Nav */}
           <nav className="flex flex-wrap justify-center gap-6">
-            {NAV_ITEMS.map((item) => (
+            {filteredNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
