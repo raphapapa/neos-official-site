@@ -48,6 +48,7 @@ export default async function RootLayout({
         <Footer
           xUrl={settings.x_url}
           juniorXUrl={settings.junior_x_url}
+          hiddenItems={(settings.nav_hidden_items || '').split(',').map(s => s.trim()).filter(Boolean)}
         />
       </body>
     </html>

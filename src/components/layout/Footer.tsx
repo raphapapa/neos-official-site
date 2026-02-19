@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const NAV_ITEMS = [
+const ALL_NAV_ITEMS = [
   { href: "/news", label: "NEWS" },
   { href: "/members", label: "MEMBERS" },
   { href: "/about", label: "ABOUT" },
@@ -20,9 +20,11 @@ const X_ICON = (
 type Props = {
   xUrl?: string;
   juniorXUrl?: string;
+  hiddenItems?: string[];
 };
 
-export function Footer({ xUrl, juniorXUrl }: Props) {
+export function Footer({ xUrl, juniorXUrl, hiddenItems = [] }: Props) {
+  const NAV_ITEMS = ALL_NAV_ITEMS.filter(item => !hiddenItems.includes(item.label));
   const mainX = xUrl || "https://x.com/neos_esports";
 
   return (
