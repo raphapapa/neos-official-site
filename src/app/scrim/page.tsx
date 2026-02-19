@@ -75,7 +75,7 @@ export default function ScrimPage() {
 
             <div className="relative aspect-[16/9] overflow-hidden rounded-sm mb-8">
               <Image
-                src="https://pbs.twimg.com/media/G_bjkFIa8AAC_kd?format=jpg&name=large"
+                src="/images/scrim/apf-scrim.jpg"
                 alt="APF SCRIM"
                 fill
                 className="object-cover"
@@ -129,7 +129,7 @@ export default function ScrimPage() {
 
             <div className="relative aspect-[16/9] overflow-hidden rounded-sm mb-8">
               <Image
-                src="https://pbs.twimg.com/media/HBLyQw1akAMnnZX?format=jpg&name=large"
+                src="/images/scrim/junior-scrim.jpg"
                 alt="JUNIOR SCRIM"
                 fill
                 className="object-cover"

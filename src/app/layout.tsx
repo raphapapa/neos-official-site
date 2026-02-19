@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   description:
     "NEOS E-SPORTSはFortniteを中心に活動するeスポーツチーム eスポーツを通じて人が本気で成長する環境を設計し、伴走する",
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 

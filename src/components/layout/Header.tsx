@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 
 const ALL_NAV_ITEMS = [
   { href: "/news", label: "NEWS" },
@@ -20,6 +20,7 @@ export function Header({ hiddenItems = [] }: { hiddenItems?: string[] }) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [, startTransition] = useTransition();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
@@ -28,7 +29,7 @@ export function Header({ hiddenItems = [] }: { hiddenItems?: string[] }) {
   }, []);
 
   useEffect(() => {
-    setIsMobileMenuOpen(false);
+    startTransition(() => setIsMobileMenuOpen(false));
   }, [pathname]);
 
   return (

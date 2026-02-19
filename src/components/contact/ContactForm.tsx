@@ -47,6 +47,7 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
     team_history: "",
     motivation: "",
     appeal: "",
+    birthday_post_ok: "",
     parent_consent: false,
     parent_x_id: "",
     parent_can_join: "",
@@ -75,6 +76,7 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
     if (!join.team_history.trim()) { setError("他チーム経歴を入力してください（なしの場合は「なし」）"); return; }
     if (!join.motivation.trim()) { setError("志望理由を入力してください"); return; }
     if (!join.appeal.trim()) { setError("アピールポイントを入力してください"); return; }
+    if (!join.birthday_post_ok) { setError("誕生日ポストについて選択してください"); return; }
     if (showParentConsent && !join.parent_consent) { setError("保護者の同意にチェックを入れてください"); return; }
 
     setSubmitting(true);
@@ -94,6 +96,7 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
           device: join.device,
           team_history: join.team_history.trim(),
           appeal: join.appeal.trim(),
+          birthday_post_ok: join.birthday_post_ok === "ok",
           pr_rank: join.pr_rank.trim() || undefined,
           tracker_url: join.tracker_url.trim() || undefined,
           parent_consent: join.parent_consent || undefined,
@@ -159,9 +162,12 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
             </p>
           </div>
         ) : (
-          <p className="text-sub-text">
-            お問い合わせありがとうございます。内容を確認の上、ご連絡いたします
-          </p>
+          <div className="text-sub-text space-y-2">
+            <p>お問い合わせありがとうございます</p>
+            <p className="text-sm">
+              内容を確認の上、ご入力いただいたメールアドレス宛にご返信いたします
+            </p>
+          </div>
         )}
       </div>
     );
@@ -304,6 +310,25 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
             <div>
               <label className={labelClass}>アピールポイント <span className="text-neos-red">*</span></label>
               <textarea value={join.appeal} onChange={e => updateJoin("appeal", e.target.value)} rows={4} placeholder="ご自身のアピールポイントをご記入ください" className={inputClass} />
+            </div>
+          </fieldset>
+
+          {/* その他 */}
+          <fieldset className="space-y-4">
+            <legend className="text-xs font-medium text-sub-text/60 tracking-wider mb-2">その他</legend>
+
+            <div>
+              <label className={labelClass}>誕生日ポスト（公式Xでの誕生日紹介） <span className="text-neos-red">*</span></label>
+              <div className="flex gap-6 mt-2">
+                <label className="flex items-center gap-2 cursor-pointer text-sm text-white">
+                  <input type="radio" name="birthday_post" value="ok" checked={join.birthday_post_ok === "ok"} onChange={e => updateJoin("birthday_post_ok", e.target.value)} className="accent-[#E50914]" />
+                  問題ありません
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer text-sm text-white">
+                  <input type="radio" name="birthday_post" value="ng" checked={join.birthday_post_ok === "ng"} onChange={e => updateJoin("birthday_post_ok", e.target.value)} className="accent-[#E50914]" />
+                  しないでください
+                </label>
+              </div>
             </div>
           </fieldset>
 
