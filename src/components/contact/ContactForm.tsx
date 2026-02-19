@@ -63,6 +63,7 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
 
   async function handleJoinSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (submitting) return;
     setError("");
 
     if (!join.name.trim()) { setError("活動名を入力してください"); return; }
@@ -119,6 +120,7 @@ export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: Contact
 
   async function handleGeneralSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
     setSubmitting(true);
     setError("");
 
