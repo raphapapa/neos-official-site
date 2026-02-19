@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { apiFetch } from "./client";
 import type {
   Player,
@@ -12,9 +13,9 @@ export async function getPlayers(): Promise<Player[]> {
   return (await apiFetch<Player[]>("/api/public/players", { revalidate: 60 })) || [];
 }
 
-export async function getPlayerById(id: string): Promise<PlayerDetail | null> {
+export const getPlayerById = cache(async (id: string): Promise<PlayerDetail | null> => {
   return apiFetch<PlayerDetail>(`/api/public/players/${id}`, { revalidate: 60 });
-}
+});
 
 export async function getArticles(
   page = 1,
@@ -31,9 +32,9 @@ export async function getArticles(
   );
 }
 
-export async function getArticleBySlug(slug: string): Promise<Article | null> {
+export const getArticleBySlug = cache(async (slug: string): Promise<Article | null> => {
   return apiFetch<Article>(`/api/public/articles/${slug}`, { revalidate: 60 });
-}
+});
 
 export async function getSponsors(): Promise<Sponsor[]> {
   return (await apiFetch<Sponsor[]>("/api/public/sponsors", { revalidate: 60 })) || [];
