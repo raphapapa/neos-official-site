@@ -18,16 +18,36 @@ const bebasNeue = Bebas_Neue({
   display: "swap",
 });
 
+const SITE_URL = "https://neos-esports.com";
+const SITE_DESCRIPTION =
+  "NEOS E-SPORTSはFortniteを中心に活動するeスポーツチーム eスポーツを通じて人が本気で成長する環境を設計し、伴走する";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "NEOS E-SPORTS | 公式サイト",
     template: "%s | NEOS E-SPORTS",
   },
-  description:
-    "NEOS E-SPORTSはFortniteを中心に活動するeスポーツチーム eスポーツを通じて人が本気で成長する環境を設計し、伴走する",
+  description: SITE_DESCRIPTION,
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: SITE_URL,
+    siteName: "NEOS E-SPORTS",
+    title: "NEOS E-SPORTS | 公式サイト",
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NEOS E-SPORTS | 公式サイト",
+    description: SITE_DESCRIPTION,
+  },
+  alternates: {
+    canonical: SITE_URL,
   },
 };
 
