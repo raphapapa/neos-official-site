@@ -22,7 +22,7 @@ export default function ScrimPage() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <AnimateIn>
-          <SectionHeading title="SCRIM" subtitle="続けた先に、強さがある" />
+          <SectionHeading title="SCRIM" subtitle="Stay hungry" />
         </AnimateIn>
 
         {/* Introduction */}
