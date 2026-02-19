@@ -1,19 +1,17 @@
 import Image from "next/image";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { SPONSOR_TIER_LABELS } from "@/lib/constants";
-import type { Sponsor, SponsorTier } from "@/lib/types";
+import { SPONSOR_TIER_LABELS, SPONSOR_TIER_ORDER } from "@/lib/constants";
+import type { Sponsor } from "@/lib/types";
 
 type Props = {
   sponsors: Sponsor[];
 };
 
-const TIER_ORDER: SponsorTier[] = ["GOLD", "SILVER", "BRONZE", "STANDARD"];
-
 export function SponsorSection({ sponsors }: Props) {
   if (sponsors.length === 0) return null;
 
-  const grouped = TIER_ORDER.map((tier) => ({
+  const grouped = SPONSOR_TIER_ORDER.map((tier) => ({
     tier,
     label: SPONSOR_TIER_LABELS[tier],
     items: sponsors.filter((s) => s.tier === tier),
@@ -45,8 +43,8 @@ export function SponsorSection({ sponsors }: Props) {
                       <Image
                         src={sponsor.logo_url}
                         alt={sponsor.name}
-                        width={group.tier === "GOLD" ? 160 : 120}
-                        height={group.tier === "GOLD" ? 80 : 60}
+                        width={group.tier === "DIAMOND" || group.tier === "PLATINUM" ? 180 : group.tier === "GOLD" ? 160 : 120}
+                        height={group.tier === "DIAMOND" || group.tier === "PLATINUM" ? 90 : group.tier === "GOLD" ? 80 : 60}
                         className="object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                       />
                     ) : (

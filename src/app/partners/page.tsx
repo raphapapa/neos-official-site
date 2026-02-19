@@ -3,15 +3,14 @@ import Image from "next/image";
 import { getSponsors } from "@/lib/api";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { SPONSOR_TIER_LABELS } from "@/lib/constants";
-import type { SponsorTier } from "@/lib/types";
+import { SPONSOR_TIER_LABELS, SPONSOR_TIER_ORDER } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "PARTNERS",
   description: "NEOS E-SPORTSを支えてくださるパートナー企業をご紹介します。",
 };
 
-const TIER_ORDER: SponsorTier[] = ["GOLD", "SILVER", "BRONZE", "STANDARD"];
+const TIER_ORDER = SPONSOR_TIER_ORDER;
 
 export default async function PartnersPage() {
   const sponsors = await getSponsors();
@@ -49,8 +48,8 @@ export default async function PartnersPage() {
                         <Image
                           src={sponsor.logo_url}
                           alt={sponsor.name}
-                          width={group.tier === "GOLD" ? 180 : 140}
-                          height={group.tier === "GOLD" ? 90 : 70}
+                          width={group.tier === "DIAMOND" || group.tier === "PLATINUM" ? 200 : group.tier === "GOLD" ? 180 : 140}
+                          height={group.tier === "DIAMOND" || group.tier === "PLATINUM" ? 100 : group.tier === "GOLD" ? 90 : 70}
                           className="object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                         />
                       ) : (

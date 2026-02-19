@@ -95,11 +95,14 @@ export const DISPLAY_CATEGORY_COLORS: Record<DisplayCategory, string> = {
 };
 
 export const SPONSOR_TIER_LABELS: Record<SponsorTier, string> = {
+  DIAMOND: "DIAMOND",
+  PLATINUM: "PLATINUM",
   GOLD: "GOLD",
   SILVER: "SILVER",
   BRONZE: "BRONZE",
-  STANDARD: "STANDARD",
 };
+
+export const SPONSOR_TIER_ORDER: SponsorTier[] = ["DIAMOND", "PLATINUM", "GOLD", "SILVER", "BRONZE"];
 
 export const ARTICLE_CATEGORY_LABELS: Record<ArticleCategory, string> = {
   NEWS: "NEWS",

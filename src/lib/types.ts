@@ -16,7 +16,7 @@ export type Player = {
   x_account: string | null;
   pr_rank: number | null;
   earnings: number | null;
-  jersey_number: number | null;
+  jersey_number: string | null;
   image_url: string | null;
 };
 
@@ -80,7 +80,7 @@ export type ArticlesResponse = {
 };
 
 // Sponsor types
-export type SponsorTier = "GOLD" | "SILVER" | "BRONZE" | "STANDARD";
+export type SponsorTier = "DIAMOND" | "PLATINUM" | "GOLD" | "SILVER" | "BRONZE";
 
 export type Sponsor = {
   id: string;
