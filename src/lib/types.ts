@@ -35,6 +35,7 @@ export type TournamentResult = {
   placement: number | null;
   kills: number | null;
   prize: number | null;
+  team_members: string[] | null;
 };
 
 export type PlayerDetail = Omit<Player, "image_url"> & {
