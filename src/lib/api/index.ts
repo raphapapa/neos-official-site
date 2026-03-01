@@ -10,11 +10,11 @@ import type {
 } from "../types";
 
 export async function getPlayers(): Promise<Player[]> {
-  return (await apiFetch<Player[]>("/api/public/players", { revalidate: 60 })) || [];
+  return (await apiFetch<Player[]>("/api/public/players", { revalidate: 10 })) || [];
 }
 
 export const getPlayerById = cache(async (id: string): Promise<PlayerDetail | null> => {
-  return apiFetch<PlayerDetail>(`/api/public/players/${id}`, { revalidate: 60 });
+  return apiFetch<PlayerDetail>(`/api/public/players/${id}`, { revalidate: 10 });
 });
 
 export async function getArticles(
@@ -25,7 +25,7 @@ export async function getArticles(
   const params = new URLSearchParams({ page: String(page), limit: String(limit) });
   if (category) params.set("category", category);
   return (
-    (await apiFetch<ArticlesResponse>(`/api/public/articles?${params}`, { revalidate: 60 })) || {
+    (await apiFetch<ArticlesResponse>(`/api/public/articles?${params}`, { revalidate: 10 })) || {
       articles: [],
       pagination: { page, limit, total: 0, totalPages: 0 },
     }
@@ -33,13 +33,13 @@ export async function getArticles(
 }
 
 export const getArticleBySlug = cache(async (slug: string): Promise<Article | null> => {
-  return apiFetch<Article>(`/api/public/articles/${slug}`, { revalidate: 60 });
+  return apiFetch<Article>(`/api/public/articles/${slug}`, { revalidate: 10 });
 });
 
 export async function getSponsors(): Promise<Sponsor[]> {
-  return (await apiFetch<Sponsor[]>("/api/public/sponsors", { revalidate: 60 })) || [];
+  return (await apiFetch<Sponsor[]>("/api/public/sponsors", { revalidate: 10 })) || [];
 }
 
 export async function getSiteSettings(): Promise<SiteSettings> {
-  return (await apiFetch<SiteSettings>("/api/public/site-settings", { revalidate: 60 })) || {};
+  return (await apiFetch<SiteSettings>("/api/public/site-settings", { revalidate: 10 })) || {};
 }
