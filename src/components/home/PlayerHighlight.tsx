@@ -36,9 +36,13 @@ export function PlayerHighlight({ players }: Props) {
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-card to-[#111]">
-                        <span className="font-heading text-4xl text-white/10">
-                          {player.name.charAt(0)}
-                        </span>
+                        <Image
+                          src="/images/logo/logo_01.png"
+                          alt="NEOS"
+                          width={80}
+                          height={80}
+                          className="opacity-15"
+                        />
                       </div>
                     )}
 

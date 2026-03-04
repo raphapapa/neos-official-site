@@ -56,9 +56,13 @@ export default async function MemberDetailPage({ params }: Props) {
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-card to-[#111]">
-                    <span className="font-heading text-8xl text-white/10">
-                      {player.name.charAt(0)}
-                    </span>
+                    <Image
+                      src="/images/logo/logo_01.png"
+                      alt="NEOS"
+                      width={120}
+                      height={120}
+                      className="opacity-15"
+                    />
                   </div>
                 )}
               </div>
