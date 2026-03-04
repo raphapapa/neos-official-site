@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
   openGraph: {
     type: "website",
