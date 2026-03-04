@@ -44,7 +44,7 @@ function PlayerCard({ player }: { player: Player }) {
               alt="NEOS"
               width={80}
               height={80}
-              className="opacity-[0.08] brightness-[3]"
+              className="opacity-20 invert"
             />
           </div>
         )}
