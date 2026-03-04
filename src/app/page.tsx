@@ -1,5 +1,6 @@
 import { getPlayers, getArticles, getSponsors, getSiteSettings } from "@/lib/api";
 import { Hero } from "@/components/home/Hero";
+import { UniformSection } from "@/components/home/UniformSection";
 import { AboutPreview } from "@/components/home/AboutPreview";
 import { PlayerHighlight } from "@/components/home/PlayerHighlight";
 import { NewsPreview } from "@/components/home/NewsPreview";
@@ -21,6 +22,12 @@ export default async function HomePage() {
         heroTitle={settings.hero_title}
         heroSubtitle={settings.hero_subtitle}
       />
+      {settings.uniform_image_url && (
+        <>
+          <UniformSection imageUrl={settings.uniform_image_url} />
+          <SectionDivider />
+        </>
+      )}
       <AboutPreview />
       <SectionDivider />
       <PlayerHighlight players={players} />
