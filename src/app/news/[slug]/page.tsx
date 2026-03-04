@@ -88,6 +88,38 @@ export default async function ArticleDetailPage({ params }: Props) {
                 {article.body}
               </ReactMarkdown>
             </div>
+
+            {/* Adjacent Articles Navigation */}
+            {article.adjacent && (article.adjacent.prev || article.adjacent.next) && (
+              <nav className="border-t border-border mt-16 pt-8 flex justify-between items-start gap-8">
+                {article.adjacent.prev ? (
+                  <Link
+                    href={`/news/${article.adjacent.prev.slug}`}
+                    className="group flex-1 min-w-0"
+                  >
+                    <span className="text-sub-text text-xs tracking-wider">← PREV</span>
+                    <p className="text-white text-sm mt-1 truncate group-hover:text-neos-red transition-colors">
+                      {article.adjacent.prev.title}
+                    </p>
+                  </Link>
+                ) : (
+                  <div className="flex-1" />
+                )}
+                {article.adjacent.next ? (
+                  <Link
+                    href={`/news/${article.adjacent.next.slug}`}
+                    className="group flex-1 min-w-0 text-right"
+                  >
+                    <span className="text-sub-text text-xs tracking-wider">NEXT →</span>
+                    <p className="text-white text-sm mt-1 truncate group-hover:text-neos-red transition-colors">
+                      {article.adjacent.next.title}
+                    </p>
+                  </Link>
+                ) : (
+                  <div className="flex-1" />
+                )}
+              </nav>
+            )}
           </article>
         </AnimateIn>
       </div>

@@ -58,6 +58,11 @@ export type ArticleSummary = {
   published_at: string;
 };
 
+export type AdjacentArticle = {
+  slug: string;
+  title: string;
+};
+
 export type Article = {
   id: string;
   title: string;
@@ -66,6 +71,10 @@ export type Article = {
   thumbnail_url: string | null;
   category: ArticleCategory;
   published_at: string;
+  adjacent?: {
+    prev: AdjacentArticle | null;
+    next: AdjacentArticle | null;
+  };
 };
 
 export type Pagination = {
