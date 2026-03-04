@@ -61,7 +61,7 @@ export default async function MemberDetailPage({ params }: Props) {
                       alt="NEOS"
                       width={120}
                       height={120}
-                      className="opacity-15"
+                      className="opacity-[0.08] brightness-[3]"
                     />
                   </div>
                 )}
