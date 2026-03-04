@@ -3,6 +3,7 @@ import { Bebas_Neue, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { Analytics } from "@vercel/analytics/next";
 import { getSiteSettings } from "@/lib/api";
 
 const notoSansJP = Noto_Sans_JP({
@@ -74,6 +75,7 @@ export default async function RootLayout({
           juniorXUrl={settings.junior_x_url}
           hiddenItems={(settings.nav_hidden_items || '').split(',').map(s => s.trim()).filter(Boolean)}
         />
+        <Analytics />
       </body>
     </html>
   );
