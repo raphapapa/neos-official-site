@@ -43,8 +43,8 @@ export function SponsorSection({ sponsors }: Props) {
                       <Image
                         src={sponsor.logo_url}
                         alt={sponsor.name}
-                        width={group.tier === "DIAMOND" || group.tier === "PLATINUM" ? 180 : group.tier === "GOLD" ? 160 : 120}
-                        height={group.tier === "DIAMOND" || group.tier === "PLATINUM" ? 90 : group.tier === "GOLD" ? 80 : 60}
+                        width={group.tier === "PLATINUM" ? 180 : group.tier === "GOLD" ? 160 : 120}
+                        height={group.tier === "PLATINUM" ? 90 : group.tier === "GOLD" ? 80 : 60}
                         className="object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                       />
                     ) : (

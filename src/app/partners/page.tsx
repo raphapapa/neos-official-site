@@ -48,8 +48,8 @@ export default async function PartnersPage() {
                         <Image
                           src={sponsor.logo_url}
                           alt={sponsor.name}
-                          width={group.tier === "DIAMOND" || group.tier === "PLATINUM" ? 200 : group.tier === "GOLD" ? 180 : 140}
-                          height={group.tier === "DIAMOND" || group.tier === "PLATINUM" ? 100 : group.tier === "GOLD" ? 90 : 70}
+                          width={group.tier === "PLATINUM" ? 200 : group.tier === "GOLD" ? 180 : 140}
+                          height={group.tier === "PLATINUM" ? 100 : group.tier === "GOLD" ? 90 : 70}
                           className="object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                         />
                       ) : (

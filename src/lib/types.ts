@@ -90,7 +90,7 @@ export type ArticlesResponse = {
 };
 
 // Sponsor types
-export type SponsorTier = "DIAMOND" | "PLATINUM" | "GOLD" | "SILVER" | "BRONZE";
+export type SponsorTier = "PLATINUM" | "GOLD" | "SILVER" | "BRONZE";
 
 export type Sponsor = {
   id: string;
