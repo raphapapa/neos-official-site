@@ -9,7 +9,7 @@ export function UniformSection({ imageUrl }: Props) {
   return (
     <section className="relative w-full py-24 overflow-hidden">
       <AnimateIn>
-        <div className="relative px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 md:-translate-x-[5%]">
+        <div className="relative px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 md:translate-x-[5%]">
           {/* Text */}
           <div className="flex-shrink-0 text-center md:text-left">
             <h2 className="font-heading text-5xl md:text-7xl tracking-wider text-white leading-none">
