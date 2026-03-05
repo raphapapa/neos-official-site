@@ -23,7 +23,7 @@ export function UniformSection({ imageUrl }: Props) {
           </div>
 
           {/* Image */}
-          <div className="relative w-full max-w-lg md:max-w-xl md:w-[480px]">
+          <div className="relative w-full max-w-lg md:w-[480px] md:flex-shrink-0">
             <div className="relative aspect-square">
               <Image
                 src={imageUrl}
