@@ -23,7 +23,6 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="text-lg font-bold text-white border-b border-white/10 pb-2">2. 収集する個人情報</h2>
           <p className="text-sm text-sub-text leading-relaxed">本サイトでは、お問い合わせ・入隊希望フォームを通じて以下の情報を収集することがあります。</p>
-          <p className="text-xs text-sub-text/60 mt-1 mb-2">※ 当チームでは本名の収集は行いません。活動名（ハンドルネーム）のみお預かりします。</p>
           <ul className="text-sm text-sub-text list-disc pl-6 space-y-1">
             <li>活動名（ハンドルネーム）</li>
             <li>年齢・生年月日</li>
@@ -35,6 +34,7 @@ export default function PrivacyPage() {
             <li>パワーランキング・トラッカーURL（任意）</li>
             <li>保護者のX ID・保護者同意の有無・保護者の入隊可否（未成年の場合）</li>
             <li>メールアドレス・お問い合わせ内容（一般お問い合わせの場合）</li>
+            <li>氏名・所属先・連絡先（企業・団体からのお問い合わせの場合）</li>
           </ul>
         </section>
 
@@ -71,7 +71,8 @@ export default function PrivacyPage() {
           <h2 className="text-lg font-bold text-white border-b border-white/10 pb-2">6. 未成年者の個人情報</h2>
           <p className="text-sm text-sub-text leading-relaxed">
             当チームはeスポーツチームの性質上、未成年者からの情報を収集することがあります。
-            13歳以上の未成年者がフォームを送信する場合は、保護者の同意を得た上で行うようお願いしています。
+            13歳未満の方が入隊を希望される場合は、保護者の同意および保護者の同時入隊を条件としています。
+            13歳以上の未成年者がフォームを送信する場合も、保護者の同意を得た上で行うようお願いしています。
             保護者の方から開示・訂正・削除の請求があった場合は、速やかに対応いたします。
           </p>
         </section>
@@ -80,7 +81,7 @@ export default function PrivacyPage() {
           <h2 className="text-lg font-bold text-white border-b border-white/10 pb-2">7. 開示・訂正・削除</h2>
           <p className="text-sm text-sub-text leading-relaxed">
             ご本人（または保護者）は、当チームが保有する個人情報の開示・訂正・削除を請求できます。
-            本サイトの<Link href="/contact" className="text-neos-red hover:text-neos-red-bright transition-colors">お問い合わせフォーム</Link>またはX（<a href="https://x.com/neos_fortnite" target="_blank" rel="noopener noreferrer" className="text-neos-red hover:text-neos-red-bright transition-colors">@neos_fortnite</a>）よりご連絡ください。
+            本サイトの<Link href="/contact" className="text-neos-red hover:text-neos-red-bright transition-colors">お問い合わせフォーム</Link>またはX（<a href="https://x.com/NEOSCLAN_FN" target="_blank" rel="noopener noreferrer" className="text-neos-red hover:text-neos-red-bright transition-colors">@NEOSCLAN_FN</a>）よりご連絡ください。
           </p>
         </section>
 
@@ -92,7 +93,7 @@ export default function PrivacyPage() {
         </section>
 
         <div className="pt-8 text-center">
-          <p className="text-xs text-sub-text/60 mb-6">制定日: 2026年2月18日</p>
+          <p className="text-xs text-sub-text/60 mb-6">制定日: 2026年3月5日</p>
           <Link
             href="/"
             className="inline-block font-heading text-sm tracking-widest text-neos-red hover:text-neos-red-bright transition-colors border border-neos-red/30 hover:border-neos-red px-8 py-3"
