@@ -9,11 +9,13 @@ export function UniformSection({ imageUrl }: Props) {
   return (
     <section className="relative w-full py-24 overflow-hidden">
       <AnimateIn>
-        <div className="relative max-w-5xl mx-auto px-4 flex flex-col items-center gap-8">
+        <div className="relative px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
           {/* Text */}
-          <div className="text-center">
+          <div className="flex-shrink-0 text-center md:text-left">
             <h2 className="font-heading text-5xl md:text-7xl tracking-wider text-white leading-none">
-              NEOS UNIFORM
+              NEOS
+              <br />
+              UNIFORM
             </h2>
             <p className="text-sub-text text-sm tracking-widest mt-4">
               Identity we wear
@@ -21,7 +23,7 @@ export function UniformSection({ imageUrl }: Props) {
           </div>
 
           {/* Image */}
-          <div className="relative w-full max-w-lg md:max-w-xl">
+          <div className="relative w-full max-w-lg md:max-w-xl md:w-[480px]">
             <div className="relative aspect-square">
               <Image
                 src={imageUrl}
