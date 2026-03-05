@@ -85,7 +85,7 @@ export default function TermsPage() {
         </section>
 
         <div className="pt-8 text-center">
-          <p className="text-xs text-sub-text/60 mb-6">制定日: 2026年2月18日</p>
+          <p className="text-xs text-sub-text/60 mb-6">制定日: 2026年3月5日</p>
           <Link
             href="/"
             className="inline-block font-heading text-sm tracking-widest text-neos-red hover:text-neos-red-bright transition-colors border border-neos-red/30 hover:border-neos-red px-8 py-3"
