@@ -167,3 +167,10 @@ export function sortMembers<T extends { pr_rank: number | null; name: string; ca
     return a.name.localeCompare(b.name, "ja");
   });
 }
+
+/** 日付文字列をJST表示用にフォーマット（タイムゾーンずれ防止） */
+export function formatDateJP(dateStr: string): string {
+  const d = new Date(dateStr);
+  const jst = new Date(d.getTime() + 9 * 60 * 60 * 1000);
+  return `${jst.getUTCFullYear()}/${jst.getUTCMonth() + 1}/${jst.getUTCDate()}`;
+}

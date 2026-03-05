@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ARTICLE_CATEGORY_LABELS, ARTICLE_CATEGORY_COLORS } from "@/lib/constants";
+import { ARTICLE_CATEGORY_LABELS, ARTICLE_CATEGORY_COLORS, formatDateJP } from "@/lib/constants";
 import type { ArticleSummary } from "@/lib/types";
 
 type Props = {
@@ -36,7 +36,7 @@ export function ArticleCard({ article }: Props) {
       </div>
       <div className="p-4">
         <time className="text-sub-text text-xs">
-          {new Date(article.published_at).toLocaleDateString("ja-JP")}
+          {formatDateJP(article.published_at)}
         </time>
         <h3 className="text-white text-sm font-medium mt-1 line-clamp-2 group-hover:text-neos-red transition-colors">
           {article.title}

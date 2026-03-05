@@ -5,7 +5,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getArticleBySlug } from "@/lib/api";
-import { ARTICLE_CATEGORY_LABELS, ARTICLE_CATEGORY_COLORS } from "@/lib/constants";
+import { ARTICLE_CATEGORY_LABELS, ARTICLE_CATEGORY_COLORS, formatDateJP } from "@/lib/constants";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 
 type Props = {
@@ -51,7 +51,7 @@ export default async function ArticleDetailPage({ params }: Props) {
                   {ARTICLE_CATEGORY_LABELS[article.category]}
                 </span>
                 <time className="text-sub-text text-sm">
-                  {new Date(article.published_at).toLocaleDateString("ja-JP")}
+                  {formatDateJP(article.published_at)}
                 </time>
               </div>
               <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight">
