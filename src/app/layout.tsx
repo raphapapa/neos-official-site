@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { getSiteSettings } from "@/lib/api";
 
 const notoSansJP = Noto_Sans_JP({
@@ -149,6 +150,7 @@ export default async function RootLayout({
           hiddenItems={(settings.nav_hidden_items || '').split(',').map(s => s.trim()).filter(Boolean)}
         />
         <Analytics />
+        <GoogleAnalytics gaId="G-BJ6ZKWQ6PN" />
       </body>
     </html>
   );
