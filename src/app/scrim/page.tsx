@@ -63,6 +63,15 @@ export default function ScrimPage() {
       {/* APF SCRIM */}
       <AnimateIn delay={0.1}>
         <section className="py-20">
+          <div className="relative aspect-[16/9] overflow-hidden mb-10">
+            <Image
+              src="/images/scrim/apf-scrim.jpg"
+              alt="APF SCRIM"
+              fill
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto px-4">
             <div className="flex items-end gap-4 mb-2">
               <h2 className="font-heading text-3xl sm:text-5xl tracking-wider text-white leading-none">
@@ -86,15 +95,6 @@ export default function ScrimPage() {
                 一戦ごとに意味のある経験を刻む
               </p>
             </div>
-          </div>
-
-          <div className="relative aspect-[16/9] overflow-hidden mb-8">
-            <Image
-              src="/images/scrim/apf-scrim.jpg"
-              alt="APF SCRIM"
-              fill
-              className="object-cover"
-            />
           </div>
 
           <div className="max-w-4xl mx-auto px-4">
@@ -139,6 +139,15 @@ export default function ScrimPage() {
       {/* JUNIOR SCRIM */}
       <AnimateIn delay={0.1}>
         <section className="py-20">
+          <div className="relative aspect-[16/9] overflow-hidden mb-10">
+            <Image
+              src="/images/scrim/junior-scrim.jpg"
+              alt="JUNIOR SCRIM"
+              fill
+              className="object-cover"
+            />
+          </div>
+
           <div className="max-w-4xl mx-auto px-4">
             <div className="flex items-end gap-4 mb-2">
               <h2 className="font-heading text-3xl sm:text-5xl tracking-wider text-white leading-none">
@@ -162,15 +171,6 @@ export default function ScrimPage() {
                 場数が「考える力」と「向き合う力」に変わる
               </p>
             </div>
-          </div>
-
-          <div className="relative aspect-[16/9] overflow-hidden mb-8">
-            <Image
-              src="/images/scrim/junior-scrim.jpg"
-              alt="JUNIOR SCRIM"
-              fill
-              className="object-cover"
-            />
           </div>
 
           <div className="max-w-4xl mx-auto px-4">

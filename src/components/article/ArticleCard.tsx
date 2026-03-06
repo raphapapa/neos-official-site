@@ -41,11 +41,6 @@ export function ArticleCard({ article }: Props) {
         <h3 className="text-white text-sm font-medium mt-1 line-clamp-2 group-hover:text-neos-red transition-colors">
           {article.title}
         </h3>
-        {article.excerpt && (
-          <p className="text-sub-text text-xs mt-2 line-clamp-2">
-            {article.excerpt}
-          </p>
-        )}
       </div>
     </Link>
   );
