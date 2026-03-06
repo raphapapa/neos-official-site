@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEOS E-SPORTS パートナーシッププログラム</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --red: #E50914;
+    --red-bright: #FF1A25;
+    --bg: #0A0A0A;
+    --card: #1A1A1A;
+    --border: #2A2A2A;
+    --text: #FFFFFF;
+    --sub: #9CA3AF;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { page-break-after: always; break-after: page; }
+    .page:last-child { page-break-after: avoid; }
+  }
+
+  .page {
+    min-height: 100vh;
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-number {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--sub);
+    letter-spacing: 2px;
+  }
+
+  .heading {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+  }
+
+  .red-line {
+    width: 48px;
+    height: 2px;
+    background: var(--red);
+    margin: 20px 0 40px;
+  }
+
+  .red-line-center {
+    width: 48px;
+    height: 2px;
+    background: var(--red);
+    margin: 20px auto 40px;
+  }
+
+  .accent { color: var(--red); }
+  .sub { color: var(--sub); }
+  .small { font-size: 13px; }
+  .text-center { text-align: center; }
+
+  /* Page 1: Cover */
+  .cover {
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A0A0A 50%, #0A0A0A 100%);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(229,9,20,0.04) 40px, rgba(229,9,20,0.04) 41px);
+  }
+  .cover-content { position: relative; z-index: 1; }
+  .cover h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    letter-spacing: 8px;
+    margin-bottom: 8px;
+  }
+  .cover .subtitle {
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: var(--sub);
+    margin-bottom: 60px;
+  }
+  .cover .program-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 6px;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .cover .description {
+    font-size: 14px;
+    color: var(--sub);
+    line-height: 2;
+  }
+  .cover .date {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--sub);
+    letter-spacing: 2px;
+  }
+  .top-line, .bottom-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(229,9,20,0.4), transparent);
+  }
+  .top-line { top: 0; }
+  .bottom-line { bottom: 0; }
+
+  /* Stats grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin: 40px 0;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 28px 16px;
+    text-align: center;
+    border-radius: 2px;
+    position: relative;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--red);
+  }
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 2px;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--sub);
+    margin-top: 8px;
+  }
+  .stat-note {
+    font-size: 10px;
+    color: var(--sub);
+    margin-top: 4px;
+    opacity: 0.7;
+  }
+
+  /* 2-column */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 30px 0;
+  }
+
+  /* Value cards */
+  .value-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--red);
+  }
+  .value-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .value-card .sub-title {
+    font-size: 11px;
+    color: var(--sub);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .value-card p {
+    font-size: 13px;
+    color: var(--sub);
+    line-height: 1.9;
+  }
+
+  /* Tier table */
+  .tier-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 30px 0;
+  }
+  .tier-table th {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 16px 8px;
+    text-align: center;
+    border-bottom: 2px solid var(--border);
+    font-weight: 400;
+  }
+  .tier-table th.tier-unreal { color: #c084fc; }
+  .tier-table th.tier-champion { color: #f87171; }
+  .tier-table th.tier-diamond { color: #22d3ee; }
+  .tier-table th.tier-platinum { color: #34d399; }
+  .tier-table th.tier-gold { color: #fbbf24; }
+  .tier-table th.tier-silver { color: #d1d5db; }
+  .tier-table td {
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .tier-table td:first-child {
+    text-align: left;
+    color: var(--sub);
+    padding-left: 0;
+  }
+  .tier-table tr:nth-child(even) { background: rgba(26,26,26,0.5); }
+  .tier-check { color: var(--red); font-size: 16px; }
+  .tier-dash { color: var(--border); }
+  .tier-note {
+    display: block;
+    font-size: 10px;
+    color: var(--sub);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+  }
+
+  /* Activity data table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 20px 0;
+  }
+  .data-table th {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--red);
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--sub);
+    letter-spacing: 1px;
+  }
+  .data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table tr:nth-child(even) { background: rgba(26,26,26,0.5); }
+
+  /* Scrim detail */
+  .scrim-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 32px;
+    margin: 16px 0;
+  }
+  .scrim-section h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .scrim-section .sub-title {
+    font-size: 11px;
+    color: var(--sub);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  .scrim-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .scrim-stat {
+    text-align: center;
+  }
+  .scrim-stat .number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--text);
+  }
+  .scrim-stat .label {
+    font-size: 11px;
+    color: var(--sub);
+    margin-top: 4px;
+  }
+
+  /* CTA */
+  .cta-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 48px;
+    text-align: center;
+    border-radius: 2px;
+    margin-top: 40px;
+  }
+  .cta-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+  }
+
+  /* Section label */
+  .section-label {
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .confidential {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    font-size: 10px;
+    color: var(--sub);
+    letter-spacing: 2px;
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+  }
+
+  ul.benefit-list {
+    list-style: none;
+    padding: 0;
+  }
+  ul.benefit-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--sub);
+    padding-left: 16px;
+    position: relative;
+  }
+  ul.benefit-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<!-- Page 1: Cover -->
+<div class="page cover">
+  <div class="top-line"></div>
+  <div class="bottom-line"></div>
+  <div class="cover-content">
+    <h1 class="heading">NEOS E-SPORTS</h1>
+    <p class="subtitle">NEW ERA OF E-SPORTS</p>
+    <div style="width:48px;height:2px;background:var(--red);margin:0 auto 48px;"></div>
+    <p class="program-title">PARTNERSHIP PROGRAM</p>
+    <p class="description">
+      eスポーツを通じて人が本気で成長する環境を設計し、伴走する<br>
+      NEOSの理念に共感いただけるパートナーを募集しています
+    </p>
+  </div>
+  <p class="date">CONFIDENTIAL &mdash; 2026</p>
+</div>
+
+<!-- Page 2: About NEOS -->
+<div class="page">
+  <div class="confidential">CONFIDENTIAL</div>
+  <p class="section-label">About</p>
+  <h2 class="heading" style="font-size:40px;">NEOS E-SPORTS</h2>
+  <div class="red-line"></div>
+
+  <p style="font-size:15px;color:var(--sub);margin-bottom:24px;max-width:640px;">
+    NEOS E-SPORTSは2022年4月設立のFortnite eスポーツチーム。
+    「人が成長する結果として強くなる」を理念に掲げ、
+    育成と競技力の両立を追求しています。
+  </p>
+  <p style="font-size:15px;color:var(--text);margin-bottom:40px;max-width:640px;">
+    チーム名の「NEOS」には「New Era Of eSports — Eスポーツの新時代を創造する」という想いが込められています。
+    トキシックを肯定しない品格あるチーム運営を行い、
+    Strong・Cool・Good Mannersをチームコンセプトとして掲げています。
+  </p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">57<span style="font-size:24px;">+</span></div>
+      <div class="stat-label">所属選手</div>
+      <div class="stat-note">ATHLETE / GROWTH / YOUTH / JUNIOR</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">7,100<span style="font-size:24px;">+</span></div>
+      <div class="stat-label">SNSフォロワー</div>
+      <div class="stat-note">@NEOSCLAN_FN + @neosclan_u13</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">300<span style="font-size:24px;">+</span></div>
+      <div class="stat-label">スクリム参加者/回</div>
+      <div class="stat-note">APF SCRIM 平均値</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">170K<span style="font-size:24px;">+</span></div>
+      <div class="stat-label">月間Xインプレッション</div>
+      <div class="stat-note">APF SCRIM告知のみ</div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;">
+    <p style="font-size:13px;color:var(--sub);line-height:2;">
+      選手管理アプリを自社開発し、全選手の成長をデータで可視化。
+      週次AIレビュー・練習記録・目標管理を通じて、選手一人ひとりに伴走する仕組みを構築しています。
+    </p>
+  </div>
+  <div class="page-number">02</div>
+</div>
+
+<!-- Page 3: Activity Data -->
+<div class="page">
+  <div class="confidential">CONFIDENTIAL</div>
+  <p class="section-label">Activity Data</p>
+  <h2 class="heading" style="font-size:40px;">REACH & ENGAGEMENT</h2>
+  <div class="red-line"></div>
+
+  <div class="two-col">
+    <div class="scrim-section">
+      <h3>APF SCRIM</h3>
+      <p class="sub-title">NEOS × APF 共同運営 — 毎週末開催</p>
+      <div class="scrim-stats">
+        <div class="scrim-stat">
+          <div class="number">295</div>
+          <div class="label">平均参加者/回</div>
+        </div>
+        <div class="scrim-stat">
+          <div class="number">44.5</div>
+          <div class="label">最高同時視聴</div>
+        </div>
+        <div class="scrim-stat">
+          <div class="number">19,000+</div>
+          <div class="label">YouTube月間視聴</div>
+        </div>
+      </div>
+      <div style="margin-top:20px;">
+        <table class="data-table">
+          <thead>
+            <tr><th>期間</th><th>Xインプレッション</th><th>YouTube視聴</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2026年1月</td><td style="text-align:right;">178,563</td><td style="text-align:right;">19,487</td></tr>
+            <tr><td>2026年2月</td><td style="text-align:right;">164,748</td><td style="text-align:right;">18,744</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="scrim-section">
+      <h3>JUNIOR SCRIM</h3>
+      <p class="sub-title">NEOS主催 U13ソロラガ — 毎週月・水</p>
+      <div class="scrim-stats">
+        <div class="scrim-stat">
+          <div class="number">29</div>
+          <div class="label">平均参加者/回</div>
+        </div>
+        <div class="scrim-stat">
+          <div class="number">18,000</div>
+          <div class="label">Xインプレッション/回</div>
+        </div>
+        <div class="scrim-stat">
+          <div class="number">140K+</div>
+          <div class="label">月間Xインプ推定</div>
+        </div>
+      </div>
+      <div style="margin-top:20px;font-size:13px;color:var(--sub);line-height:1.9;">
+        U13世代を対象とした定期スクリムを週2回開催。
+        若年層プレイヤーの育成と競技機会の提供を目的としています。
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--card);border:1px solid var(--border);padding:24px 32px;border-radius:2px;margin-top:8px;">
+    <h3 class="heading" style="font-size:18px;letter-spacing:2px;margin-bottom:12px;">SNS OVERVIEW</h3>
+    <table class="data-table" style="margin:0;">
+      <thead>
+        <tr><th>アカウント</th><th>フォロワー</th><th>ポスト数</th><th>備考</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>@NEOSCLAN_FN</td><td style="text-align:right;">6,211</td><td style="text-align:right;">3,842</td><td style="color:var(--sub);">メインアカウント（認証済み）</td></tr>
+        <tr><td>@neosclan_u13</td><td style="text-align:right;">912</td><td style="text-align:right;">1,152</td><td style="color:var(--sub);">JUNIOR部門</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-number">03</div>
+</div>
+
+<!-- Page 4: What We Offer -->
+<div class="page">
+  <div class="confidential">CONFIDENTIAL</div>
+  <p class="section-label">Value</p>
+  <h2 class="heading" style="font-size:40px;">WHAT WE OFFER</h2>
+  <div class="red-line"></div>
+
+  <p style="font-size:14px;color:var(--sub);margin-bottom:32px;max-width:640px;">
+    NEOSのパートナーシップは、単なるロゴ掲出にとどまりません。
+    チームの活動や成長に直接関わることで、eスポーツを通じた価値共創を実現します。
+  </p>
+
+  <div class="two-col">
+    <div class="value-card">
+      <h3>BRAND EXPOSURE</h3>
+      <p class="sub-title">ブランド露出</p>
+      <p>
+        公式サイト、SNS（合計7,100+フォロワー）、ユニフォーム、
+        スクリム配信など、NEOSの活動に関わるあらゆるタッチポイントで
+        パートナーのブランドを露出します。
+        月間Xインプレッション17万超のリーチをご活用いただけます。
+      </p>
+    </div>
+    <div class="value-card">
+      <h3>CONTENT</h3>
+      <p class="sub-title">コンテンツ連携</p>
+      <p>
+        NEWS記事でのパートナー紹介、スクリム配信内でのロゴ露出、
+        SNS紹介投稿を通じて、10代〜20代のeスポーツファン層へ
+        直接リーチできます。
+        毎週開催のスクリムは安定的な露出機会を提供します。
+      </p>
+    </div>
+    <div class="value-card">
+      <h3>DATA & REPORT</h3>
+      <p class="sub-title">データ・レポート</p>
+      <p>
+        AIが自動生成する活動レポート、スクリムの参加者数・
+        インプレッション・視聴データなどの実績データを定期的に提供。
+        パートナーシップの効果を数値で可視化します。
+      </p>
+    </div>
+    <div class="value-card">
+      <h3>EXPERIENCE</h3>
+      <p class="sub-title">体験・参加</p>
+      <p>
+        ユニフォームへのロゴ掲載、スクリムの冠ネーミングライツ、
+        物品の選手配布など、チームの活動に直接関わる体験を提供。
+        選手や参加者との接点を通じたブランド体験を実現します。
+      </p>
+    </div>
+  </div>
+
+  <div class="page-number">04</div>
+</div>
+
+<!-- Page 5: Program Tiers -->
+<div class="page">
+  <div class="confidential">CONFIDENTIAL</div>
+  <p class="section-label">Program</p>
+  <h2 class="heading" style="font-size:40px;">PARTNERSHIP TIERS</h2>
+  <div class="red-line"></div>
+
+  <p style="font-size:14px;color:var(--sub);margin-bottom:16px;max-width:640px;">
+    Fortniteの競技ランクに準拠した6段階のプログラム。
+    企業・個人を問わず、それぞれの関わり方に合ったティアをお選びいただけます。
+  </p>
+
+  <table class="tier-table">
+    <thead>
+      <tr>
+        <th style="text-align:left;padding-left:0;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--sub);">特典内容</th>
+        <th class="tier-unreal">UNREAL<span class="tier-note">1社限定</span></th>
+        <th class="tier-champion">CHAMPION<span class="tier-note">3社限定</span></th>
+        <th class="tier-diamond">DIAMOND</th>
+        <th class="tier-platinum">PLATINUM</th>
+        <th class="tier-gold">GOLD</th>
+        <th class="tier-silver">SILVER</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>公式サイトロゴ掲載</td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+      </tr>
+      <tr>
+        <td>SNS紹介投稿</td>
+        <td><span class="tier-check">●</span><span class="tier-note">月2回+</span></td>
+        <td><span class="tier-check">●</span><span class="tier-note">月2回</span></td>
+        <td><span class="tier-check">●</span><span class="tier-note">月1回</span></td>
+        <td><span class="tier-check">●</span><span class="tier-note">年4回</span></td>
+        <td><span class="tier-check">●</span><span class="tier-note">年2回</span></td>
+        <td><span class="tier-check">●</span><span class="tier-note">年1回</span></td>
+      </tr>
+      <tr>
+        <td>NEWS記事でのパートナー紹介</td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-dash">−</span></td>
+      </tr>
+      <tr>
+        <td>AI活動レポート提供（月次）</td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+      </tr>
+      <tr>
+        <td>スクリム配信内ロゴ露出</td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+      </tr>
+      <tr>
+        <td>物品の選手配布</td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+      </tr>
+      <tr>
+        <td>ユニフォームロゴ掲載</td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+      </tr>
+      <tr>
+        <td>スクリム冠ネーミングライツ</td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+      </tr>
+      <tr>
+        <td>選手管理データ提供（集計）</td>
+        <td><span class="tier-check">●</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+        <td><span class="tier-dash">−</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:12px;color:var(--sub);text-align:center;margin-top:12px;">
+    各ティアの詳細・条件・金額については、個別にご案内いたします
+  </p>
+
+  <div class="page-number">05</div>
+</div>
+
+<!-- Page 6: Current Partners + CTA -->
+<div class="page">
+  <div class="confidential">CONFIDENTIAL</div>
+  <p class="section-label">Partners</p>
+  <h2 class="heading" style="font-size:40px;">CURRENT PARTNERS</h2>
+  <div class="red-line"></div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div style="background:var(--card);border:1px solid var(--border);padding:32px;border-radius:2px;">
+      <h3 class="heading" style="font-size:20px;letter-spacing:2px;margin-bottom:4px;">TORAZEMI</h3>
+      <p style="font-size:11px;color:var(--sub);letter-spacing:2px;margin-bottom:16px;">ONLINE LEARNING SUPPORT</p>
+      <p style="font-size:13px;color:var(--sub);line-height:1.9;">
+        オンライン学習支援サービス。一人ひとりの状況や特性に合わせた個別指導を通じて、
+        NEOSの若手選手の学業と競技の両立を支えています。
+      </p>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);padding:32px;border-radius:2px;">
+      <h3 class="heading" style="font-size:20px;letter-spacing:2px;margin-bottom:4px;">AJINOMOTO GAME SUPPORTERS</h3>
+      <p style="font-size:11px;color:var(--sub);letter-spacing:2px;margin-bottom:16px;">CONDITIONING SUPPORT FOR GAMERS</p>
+      <p style="font-size:13px;color:var(--sub);line-height:1.9;">
+        味の素のアミノ酸研究の知見をeスポーツの現場に届けるプロジェクト。
+        スクリム参加選手へのコンディショニングサポートを提供しています。
+      </p>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <p class="section-label" style="margin-bottom:8px;">Contact</p>
+    <h3>GET IN TOUCH</h3>
+    <div style="width:48px;height:2px;background:var(--red);margin:16px auto 24px;"></div>
+    <p style="font-size:14px;color:var(--sub);line-height:2;margin-bottom:8px;">
+      NEOSの理念に共感いただける方からのご連絡をお待ちしています<br>
+      規模や形態を問わず、まずはお気軽にご相談ください
+    </p>
+    <div style="margin-top:24px;">
+      <p style="font-size:13px;color:var(--sub);margin-bottom:4px;">お問い合わせ</p>
+      <p style="font-size:15px;color:var(--text);">neos-esports.com/contact</p>
+    </div>
+    <div style="margin-top:16px;">
+      <p style="font-size:13px;color:var(--sub);margin-bottom:4px;">X (Twitter)</p>
+      <p style="font-size:15px;color:var(--text);">@NEOSCLAN_FN</p>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:32px;">
+    <p style="font-size:11px;color:var(--sub);letter-spacing:2px;">
+      &copy; 2026 NEOS E-SPORTS. All rights reserved.
+    </p>
+    <p style="font-size:10px;color:var(--sub);margin-top:4px;opacity:0.6;">
+      本資料は機密情報を含みます。第三者への開示・転載はご遠慮ください。
+    </p>
+  </div>
+
+  <div class="page-number">06</div>
+</div>
+
+</body>
+</html>
