@@ -6,8 +6,8 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SPONSOR_TIER_LABELS, SPONSOR_TIER_ORDER } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "PARTNERS",
-  description: "NEOS E-SPORTSを支えてくださるパートナー企業をご紹介します。",
+  title: "パートナー・スポンサー",
+  description: "NEOS E-SPORTSを支えてくださるパートナー企業・スポンサーをご紹介します。",
 };
 
 const TIER_ORDER = SPONSOR_TIER_ORDER;

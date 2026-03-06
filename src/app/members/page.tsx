@@ -5,8 +5,8 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { PlayerFilter } from "@/components/player/PlayerFilter";
 
 export const metadata: Metadata = {
-  title: "MEMBERS",
-  description: "NEOS E-SPORTSのメンバー一覧。Fortniteを中心に活動するメンバーをご紹介します。",
+  title: "所属選手一覧",
+  description: "NEOS E-SPORTSの所属選手一覧。Fortniteの競技シーンで活躍する選手57名のプロフィール・実績を紹介。",
 };
 
 export default async function MembersPage() {

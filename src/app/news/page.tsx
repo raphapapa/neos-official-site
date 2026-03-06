@@ -8,8 +8,8 @@ import { ARTICLE_CATEGORY_LABELS } from "@/lib/constants";
 import type { ArticleCategory } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "お知らせ",
-  description: "NEOS E-SPORTSの最新ニュース、ブログ、大会結果をお届けします。",
+  title: "ニュース・大会結果",
+  description: "NEOS E-SPORTSの最新ニュース、ブログ、Fortnite大会結果をお届けします。",
 };
 
 type Props = {

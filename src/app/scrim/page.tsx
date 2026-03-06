@@ -5,9 +5,9 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SectionDivider } from "@/components/shared/SectionDivider";
 
 export const metadata: Metadata = {
-  title: "SCRIM",
+  title: "スクリム紹介",
   description:
-    "NEOS E-SPORTSが定期開催するスクリム情報 APF SCRIMとJUNIOR SCRIMの紹介",
+    "NEOS E-SPORTSが定期開催するFortniteスクリム情報。APF SCRIMとJUNIOR SCRIMの紹介。",
 };
 
 const X_ICON = (

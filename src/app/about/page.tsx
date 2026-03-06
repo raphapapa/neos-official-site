@@ -6,9 +6,9 @@ import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "チーム概要",
+  title: "チーム概要・理念",
   description:
-    "NEOS E-SPORTSのミッション、価値観、活動内容をご紹介します。",
+    "NEOS E-SPORTSのミッション・価値観・活動内容。育成と競技力の両立を理念に掲げるFortnite eスポーツチームの概要。",
 };
 
 const DEFAULT_ABOUT = `## MISSION

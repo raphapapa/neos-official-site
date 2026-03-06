@@ -20,16 +20,15 @@ const bebasNeue = Bebas_Neue({
 });
 
 const SITE_URL = "https://neos-esports.com";
-const SITE_DESCRIPTION =
-  "NEOS E-SPORTSはFortniteを中心に活動するeスポーツチーム eスポーツを通じて人が本気で成長する環境を設計し、伴走する";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "NEOS E-SPORTS | 公式サイト",
+    default: "NEOS E-SPORTS | Fortnite eスポーツチーム",
     template: "%s | NEOS E-SPORTS",
   },
-  description: SITE_DESCRIPTION,
+  description:
+    "NEOS E-SPORTSはFortniteの競技チーム。選手57名が所属。育成と競技力の両立を理念に掲げ、スクリム運営・大会参戦・選手育成に取り組んでいます。スポンサー・パートナーシップのお問い合わせも受付中。",
   robots: {
     index: true,
     follow: true,
@@ -39,8 +38,9 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: SITE_URL,
     siteName: "NEOS E-SPORTS",
-    title: "NEOS E-SPORTS | 公式サイト",
-    description: SITE_DESCRIPTION,
+    title: "NEOS E-SPORTS | Fortnite eスポーツチーム",
+    description:
+      "NEOS E-SPORTSはFortniteの競技チーム。選手57名が所属。育成と競技力の両立を理念に掲げ、スクリム運営・大会参戦・選手育成に取り組んでいます。スポンサー・パートナーシップのお問い合わせも受付中。",
     images: [
       {
         url: "/og-image.png",
@@ -52,8 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NEOS E-SPORTS | 公式サイト",
-    description: SITE_DESCRIPTION,
+    title: "NEOS E-SPORTS | Fortnite eスポーツチーム",
+    description:
+      "NEOS E-SPORTSはFortniteの競技チーム。選手57名が所属。育成と競技力の両立を理念に掲げ、スクリム運営・大会参戦・選手育成に取り組んでいます。スポンサー・パートナーシップのお問い合わせも受付中。",
     images: ["/og-image.png"],
   },
   verification: {

@@ -5,9 +5,9 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { getSiteSettings } from "@/lib/api";
 
 export const metadata: Metadata = {
-  title: "お問い合わせ",
+  title: "お問い合わせ・スポンサー募集",
   description:
-    "NEOS E-SPORTSへの入隊希望・お問い合わせはこちらから。",
+    "NEOS E-SPORTSへの入隊希望・スポンサーシップ・パートナーシップのお問い合わせはこちらから。",
 };
 
 export default async function ContactPage() {
