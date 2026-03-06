@@ -48,11 +48,18 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-bold text-white border-b border-white/10 pb-2">4. Cookie・アクセスログ</h2>
+          <h2 className="text-lg font-bold text-white border-b border-white/10 pb-2">4. Cookie・アクセス解析</h2>
           <p className="text-sm text-sub-text leading-relaxed">
             本サイトでは、サービスの提供・改善のためにCookieおよびアクセスログ（IPアドレス、ブラウザ情報、閲覧ページ等）を取得しています。
             これらの情報は個人を特定するものではありませんが、利用状況の分析に使用することがあります。
           </p>
+          <p className="text-sm text-sub-text leading-relaxed">
+            本サイトでは以下のアクセス解析ツールを使用しています。
+          </p>
+          <ul className="text-sm text-sub-text list-disc pl-6 space-y-1">
+            <li>Google Analytics（Google LLC） — Cookieを使用してアクセス情報を収集します。データはGoogleのプライバシーポリシーに基づき管理されます。詳細は<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-neos-red hover:text-neos-red-bright transition-colors">Googleプライバシーポリシー</a>をご確認ください。オプトアウトは<a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-neos-red hover:text-neos-red-bright transition-colors">Google Analyticsオプトアウトアドオン</a>から可能です</li>
+            <li>Vercel Analytics（Vercel Inc.） — Cookieを使用しない匿名のアクセス解析ツールです</li>
+          </ul>
         </section>
 
         <section className="space-y-3">
