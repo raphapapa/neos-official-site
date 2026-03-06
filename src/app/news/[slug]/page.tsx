@@ -29,50 +29,44 @@ export default async function ArticleDetailPage({ params }: Props) {
   if (!article) notFound();
 
   return (
-    <div className="pt-28 pb-24 px-4">
-      <div className="max-w-3xl mx-auto">
-        <Link
-          href="/news"
-          className="inline-block text-sub-text hover:text-white text-sm mb-8 transition-colors"
-        >
-          ← BACK TO NEWS
-        </Link>
-
-        <AnimateIn>
-          <article>
-            {/* Header */}
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span
-                  className={`text-[10px] font-bold px-2 py-0.5 rounded-sm ${
-                    ARTICLE_CATEGORY_COLORS[article.category]
-                  }`}
-                >
-                  {ARTICLE_CATEGORY_LABELS[article.category]}
-                </span>
-                <time className="text-sub-text text-sm">
-                  {formatDateJP(article.published_at)}
-                </time>
-              </div>
-              <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-                {article.title}
-              </h1>
+    <div className="pt-28 pb-24">
+      <AnimateIn>
+        <article>
+          {/* Thumbnail — full bleed */}
+          {article.thumbnail_url && (
+            <div className="relative aspect-video overflow-hidden">
+              <Image
+                src={article.thumbnail_url}
+                alt={article.title}
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
+          )}
 
-            {/* Thumbnail */}
-            {article.thumbnail_url && (
-              <div className="relative aspect-video overflow-hidden rounded-sm mb-10">
-                <Image
-                  src={article.thumbnail_url}
-                  alt={article.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            )}
+          {/* Header */}
+          <div className="max-w-3xl mx-auto px-4 mt-10 mb-10">
 
-            {/* Body */}
+            <div className="flex items-center gap-3 mb-4">
+              <span
+                className={`text-[10px] font-bold px-2 py-0.5 rounded-sm ${
+                  ARTICLE_CATEGORY_COLORS[article.category]
+                }`}
+              >
+                {ARTICLE_CATEGORY_LABELS[article.category]}
+              </span>
+              <time className="text-sub-text text-sm">
+                {formatDateJP(article.published_at)}
+              </time>
+            </div>
+            <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+              {article.title}
+            </h1>
+          </div>
+
+          {/* Body */}
+          <div className="max-w-3xl mx-auto px-4">
             <div className="site-prose">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
@@ -120,9 +114,9 @@ export default async function ArticleDetailPage({ params }: Props) {
                 )}
               </nav>
             )}
-          </article>
-        </AnimateIn>
-      </div>
+          </div>
+        </article>
+      </AnimateIn>
     </div>
   );
 }
