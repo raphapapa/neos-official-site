@@ -106,6 +106,41 @@ export default async function RootLayout({
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "NEOS E-SPORTSとは？",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Fortniteの競技eスポーツチーム。2022年設立、選手57名が所属。育成と競技力の両立を理念に活動。",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "NEOSに入るには？",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "公式サイトのお問い合わせフォームまたはX（@NEOSCLAN_FN）からご連絡ください。年齢制限なし、13歳未満は保護者の同意と同時入隊が条件です。",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "スポンサーになるには？",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "公式サイトのお問い合わせフォームからご連絡ください。パートナーシップの詳細をご案内いたします。",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
         <Header hiddenItems={(settings.nav_hidden_items || '').split(',').map(s => s.trim()).filter(Boolean)} />
         <main className="min-h-screen">{children}</main>
         <Footer
