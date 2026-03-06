@@ -41,11 +41,20 @@ export const metadata: Metadata = {
     siteName: "NEOS E-SPORTS",
     title: "NEOS E-SPORTS | 公式サイト",
     description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "NEOS E-SPORTS",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "NEOS E-SPORTS | 公式サイト",
     description: SITE_DESCRIPTION,
+    images: ["/og-image.png"],
   },
   alternates: {
     canonical: SITE_URL,
