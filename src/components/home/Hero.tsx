@@ -50,8 +50,21 @@ export function Hero({ heroImageUrl, heroTitle, heroSubtitle }: Props) {
 
         {/* Subtitle */}
         <p className="text-sub-text text-sm sm:text-base max-w-xl mx-auto leading-relaxed animate-hero-subtitle">
-          {heroSubtitle ||
-            "eスポーツを通じて人が本気で成長する環境を設計し\n伴走するチーム"}
+          {(() => {
+            const text = heroSubtitle || "eスポーツを通じて人が本気で成長する環境を設計し伴走するチーム";
+            const cleaned = text.replace("設計し、", "設計し");
+            const idx = cleaned.indexOf("伴");
+            if (idx > 0) {
+              return (
+                <>
+                  {cleaned.slice(0, idx)}
+                  <br />
+                  {cleaned.slice(idx)}
+                </>
+              );
+            }
+            return cleaned;
+          })()}
         </p>
       </div>
 
