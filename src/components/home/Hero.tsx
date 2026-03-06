@@ -41,17 +41,17 @@ export function Hero({ heroImageUrl, heroTitle, heroSubtitle }: Props) {
 
         {/* Tagline */}
         <div className="flex items-center justify-center gap-4 mb-6 animate-hero-tagline">
-          <span className="w-12 h-[1px] bg-neos-red" />
-          <span className="font-heading text-lg sm:text-xl tracking-[0.3em] text-neos-red">
+          <span className="flex-1 h-[1px] bg-neos-red max-w-12 sm:max-w-16" />
+          <span className="font-heading text-lg sm:text-xl tracking-[0.3em] text-neos-red shrink-0">
             GROWTH / TRUST / RESPECT
           </span>
-          <span className="w-12 h-[1px] bg-neos-red" />
+          <span className="flex-1 h-[1px] bg-neos-red max-w-12 sm:max-w-16" />
         </div>
 
         {/* Subtitle */}
         <p className="text-sub-text text-sm sm:text-base max-w-xl mx-auto leading-relaxed animate-hero-subtitle">
           {heroSubtitle ||
-            "eスポーツを通じて人が本気で成長する環境を設計し、伴走するチーム"}
+            "eスポーツを通じて人が本気で成長する環境を設計し\n伴走するチーム"}
         </p>
       </div>
 
