@@ -51,9 +51,9 @@ export function Hero({ heroImageUrl, heroTitle, heroSubtitle }: Props) {
         {/* Subtitle */}
         <p className="text-sub-text text-sm sm:text-base max-w-xl mx-auto leading-relaxed animate-hero-subtitle">
           eスポーツを通じて
-          <br />
+          <br className="sm:hidden" />
           成長できる環境を設計し
-          <br />
+          <br className="sm:hidden" />
           伴走するチーム
         </p>
       </div>
