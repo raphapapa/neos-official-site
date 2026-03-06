@@ -81,6 +81,31 @@ export default async function RootLayout({
       <body
         className={`${notoSansJP.variable} ${bebasNeue.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SportsTeam",
+              name: "NEOS E-SPORTS",
+              sport: "Fortnite",
+              foundingDate: "2022-04-01",
+              description:
+                "eスポーツを通じて人が本気で成長する環境を設計し、伴走するチーム",
+              url: "https://neos-esports.com",
+              sameAs: ["https://x.com/NEOSCLAN_FN"],
+              sponsor: {
+                "@type": "Organization",
+                name: "トラゼミ",
+                url: "https://www.torazemi.com/",
+              },
+              numberOfEmployees: {
+                "@type": "QuantitativeValue",
+                value: 57,
+              },
+            }),
+          }}
+        />
         <Header hiddenItems={(settings.nav_hidden_items || '').split(',').map(s => s.trim()).filter(Boolean)} />
         <main className="min-h-screen">{children}</main>
         <Footer
