@@ -63,33 +63,7 @@ export default async function AboutPage() {
           <SectionHeading title="ABOUT" subtitle="Who we are" />
         </AnimateIn>
 
-        <AnimateIn delay={0.1}>
-          <section className="mb-16 space-y-6 text-[#9CA3AF]">
-            <h2 className="text-2xl font-bold text-white border-l-4 border-[#E50914] pl-4">NEOS E-SPORTSとは</h2>
-            <p>
-              NEOS E-SPORTSは2022年4月設立のFortnite eスポーツチーム。選手57名が所属し、育成と競技力の両立を理念に活動している
-            </p>
-            <p>
-              スローガンは「Strong. Cool. Good Manners.」。「勝つために人を使う」のではなく「人が成長する結果として強くなる」という哲学を掲げ、トキシックを肯定しない品格あるチーム運営を行っている
-            </p>
-
-            <h2 className="text-2xl font-bold text-white border-l-4 border-[#E50914] pl-4">活動内容</h2>
-            <ul className="list-disc list-inside space-y-1">
-              <li>APFスクリム — 毎週末開催のFortnite対抗戦（NEOS×APF共同運営）</li>
-              <li>ジュニアスクリム — U13向け、毎週月・水曜開催</li>
-              <li>大会参戦 — FNCS等の公式大会に出場</li>
-              <li>選手育成 — 1on1面談・目標設定・振り返りによる成長支援</li>
-              <li>親子入隊 — 保護者と子どもが一緒に参加できる仕組み</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold text-white border-l-4 border-[#E50914] pl-4">スポンサー</h2>
-            <p>
-              パートナー企業としてトラゼミ（https://www.torazemi.com/）が支援。スポンサーシップ・パートナーシップのお問い合わせはお問い合わせページから受付中
-            </p>
-          </section>
-        </AnimateIn>
-
-        <AnimateIn delay={0.3}>
+        <AnimateIn delay={0.2}>
           <div className="site-prose">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
