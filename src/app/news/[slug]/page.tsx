@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import { getArticleBySlug } from "@/lib/api";
 import { ARTICLE_CATEGORY_LABELS, ARTICLE_CATEGORY_COLORS, formatDateJP } from "@/lib/constants";
 import { AnimateIn } from "@/components/shared/AnimateIn";
+import { ShareButtons } from "@/components/article/ShareButtons";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -16,9 +17,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
   if (!article) return { title: "記事が見つかりません" };
+  const description = article.body.slice(0, 160).replace(/[#*\n]/g, "");
   return {
     title: article.title,
-    description: article.body.slice(0, 160).replace(/[#*\n]/g, ""),
+    description,
+    openGraph: {
+      title: article.title,
+      description,
+      ...(article.thumbnail_url && {
+        images: [{ url: article.thumbnail_url, width: 1200, height: 630 }],
+      }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description,
+      ...(article.thumbnail_url && {
+        images: [article.thumbnail_url],
+      }),
+    },
   };
 }
 
@@ -60,9 +77,10 @@ export default async function ArticleDetailPage({ params }: Props) {
                 {formatDateJP(article.published_at)}
               </time>
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+            <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-6">
               {article.title}
             </h1>
+            <ShareButtons title={article.title} slug={slug} />
           </div>
 
           {/* Body */}

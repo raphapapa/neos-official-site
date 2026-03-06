@@ -34,15 +34,15 @@ export function ArticleCard({ article }: Props) {
           {ARTICLE_CATEGORY_LABELS[article.category]}
         </span>
       </div>
-      <div className="p-4">
-        <time className="text-sub-text text-xs">
+      <div className="p-4 sm:p-5">
+        <time className="text-sub-text text-xs sm:text-sm">
           {formatDateJP(article.published_at)}
         </time>
-        <h3 className="text-white text-sm font-medium mt-1 line-clamp-2 group-hover:text-neos-red transition-colors">
+        <h3 className="text-white text-sm sm:text-base font-medium mt-1 line-clamp-2 group-hover:text-neos-red transition-colors">
           {article.title}
         </h3>
         {article.excerpt && (
-          <p className="text-sub-text text-xs mt-2 line-clamp-2">
+          <p className="text-sub-text text-xs sm:text-sm mt-2 line-clamp-2">
             {article.excerpt}
           </p>
         )}
