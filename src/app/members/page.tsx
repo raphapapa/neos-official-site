@@ -13,8 +13,8 @@ export default async function MembersPage() {
   const players = await getPlayers();
 
   return (
-    <div className="pt-28 pb-24 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="pt-28 pb-24 px-4 sm:px-8 lg:px-12">
+      <div className="mx-auto">
         <AnimateIn>
           <SectionHeading title="MEMBERS" subtitle="Meet our members" />
         </AnimateIn>

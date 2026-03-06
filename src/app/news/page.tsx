@@ -24,13 +24,13 @@ export default async function NewsPage({ searchParams }: Props) {
 
   const { articles, pagination } = await getArticles(
     page,
-    9,
+    15,
     category && category !== "ALL" ? category : undefined
   );
 
   return (
-    <div className="pt-28 pb-24 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="pt-28 pb-24 px-4 sm:px-8 lg:px-12">
+      <div className="mx-auto">
         <AnimateIn>
           <SectionHeading title="NEWS" subtitle="Latest updates" />
         </AnimateIn>
