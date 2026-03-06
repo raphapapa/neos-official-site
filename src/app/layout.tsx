@@ -56,6 +56,9 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: ["/og-image.png"],
   },
+  verification: {
+    google: "ksxLTS-xqYrmCmiMnFPIFdE3KBjfo8uz7IVHX-Tnyl0",
+  },
   alternates: {
     canonical: SITE_URL,
   },
