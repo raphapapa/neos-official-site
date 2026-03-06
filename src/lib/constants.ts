@@ -26,7 +26,7 @@ export const DISPLAY_CATEGORY_LABELS: Record<DisplayCategory, string> = {
 const STAFF_CATEGORIES: PlayerCategory[] = [
   "OWNER", "OPERATOR", "OPERATOR_SUPPORT", "OPERATOR_INTERN",
   "JUNIOR_MANAGER", "JUNIOR_SUB_MANAGER",
-  "STREAMER", "DESIGNER", "EDITOR",
+  "STREAMER", "DESIGNER", "EDITOR", "INTERPRETER",
 ];
 
 export function toDisplayCategory(cat: PlayerCategory): DisplayCategory {
@@ -54,6 +54,7 @@ export const CATEGORY_LABELS: Record<PlayerCategory, string> = {
   DESIGNER: "DESIGNER",
   EDITOR: "EDITOR",
   STREAMER: "STREAMER",
+  INTERPRETER: "INTERPRETER",
   TRYOUT: "TRYOUT",
   SUSPENDED: "SUSPENDED",
 };
@@ -62,7 +63,7 @@ export const PUBLIC_CATEGORIES: PlayerCategory[] = [
   "ATHLETE", "GROWTH", "YOUTH", "JUNIOR",
   "OWNER", "OPERATOR", "OPERATOR_SUPPORT", "OPERATOR_INTERN",
   "JUNIOR_MANAGER", "JUNIOR_SUB_MANAGER",
-  "STREAMER", "DESIGNER", "EDITOR",
+  "STREAMER", "DESIGNER", "EDITOR", "INTERPRETER",
 ];
 
 // STAFFカテゴリの表示順序
@@ -76,6 +77,7 @@ const STAFF_SORT_ORDER: Record<PlayerCategory, number> = {
   STREAMER: 6,
   DESIGNER: 7,
   EDITOR: 8,
+  INTERPRETER: 9,
   ATHLETE: 99, GROWTH: 99, YOUTH: 99, JUNIOR: 99, TRYOUT: 99, SUSPENDED: 99,
 };
 
@@ -93,6 +95,7 @@ export const CATEGORY_COLORS: Record<PlayerCategory, string> = {
   DESIGNER: "bg-pink-900/60 text-pink-300 border border-pink-700",
   EDITOR: "bg-orange-900/60 text-orange-300 border border-orange-700",
   STREAMER: "bg-violet-900/60 text-violet-300 border border-violet-700",
+  INTERPRETER: "bg-cyan-900/60 text-cyan-300 border border-cyan-700",
   TRYOUT: "bg-gray-900/60 text-gray-300 border border-gray-700",
   SUSPENDED: "bg-gray-900/60 text-gray-400 border border-gray-700",
 };

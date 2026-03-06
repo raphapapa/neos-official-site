@@ -3,7 +3,7 @@ export type PlayerCategory =
   | "ATHLETE" | "GROWTH" | "YOUTH" | "JUNIOR"
   | "OWNER" | "OPERATOR" | "OPERATOR_SUPPORT" | "OPERATOR_INTERN"
   | "JUNIOR_MANAGER" | "JUNIOR_SUB_MANAGER"
-  | "DESIGNER" | "EDITOR" | "STREAMER"
+  | "DESIGNER" | "EDITOR" | "STREAMER" | "INTERPRETER"
   | "TRYOUT" | "SUSPENDED";
 
 export type Player = {
