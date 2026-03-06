@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 export const metadata: Metadata = {
   title: "STORE",
   description: "NEOS E-SPORTSオフィシャルグッズストア。",
+  robots: { index: false, follow: false },
 };
 
 export default function StorePage() {
