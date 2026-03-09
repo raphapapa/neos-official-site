@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEOS E-SPORTS 公式サイト 構成レポート</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+  :root {
+    --neos-red: #E50914;
+    --bg-dark: #0A0A0A;
+    --bg-card: #1A1A1A;
+    --text-main: #F5F5F5;
+    --text-sub: #9CA3AF;
+    --border: #2A2A2A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.8;
+    font-size: 14px;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    page-break-after: always;
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  /* Cover */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(229,9,20,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--text-sub);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cover h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .cover h1 span { color: var(--neos-red); }
+
+  .cover h2 {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-sub);
+    margin-bottom: 40px;
+  }
+
+  .cover-meta {
+    font-size: 12px;
+    color: var(--text-sub);
+    line-height: 2;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 2px;
+    background: var(--neos-red);
+    margin: 30px auto;
+  }
+
+  /* Section */
+  .section-num {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--neos-red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  h2.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--neos-red);
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 30px 0 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--neos-red);
+  }
+
+  h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-sub);
+    margin: 20px 0 8px;
+  }
+
+  p, li { color: var(--text-sub); font-size: 13px; }
+
+  ul { list-style: none; padding-left: 0; }
+  ul li { padding: 4px 0 4px 16px; position: relative; }
+  ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--neos-red);
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  th {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-sub);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(229,9,20,0.05);
+  }
+
+  td { color: var(--text-main); }
+
+  .td-sub { color: var(--text-sub); font-size: 11px; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-api { background: rgba(59,130,246,0.15); color: #60A5FA; }
+  .tag-hard { background: rgba(245,158,11,0.15); color: #FBBF24; }
+  .tag-settings { background: rgba(16,185,129,0.15); color: #34D399; }
+  .tag-dynamic { background: rgba(168,85,247,0.15); color: #C084FC; }
+  .tag-static { background: rgba(107,114,128,0.15); color: #9CA3AF; }
+  .tag-done { background: rgba(16,185,129,0.15); color: #34D399; }
+  .tag-pending { background: rgba(245,158,11,0.15); color: #FBBF24; }
+  .tag-coming { background: rgba(107,114,128,0.15); color: #9CA3AF; }
+
+  /* Cards */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+  }
+
+  .card-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--text-sub);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .card-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .card-value span { color: var(--neos-red); font-size: 16px; }
+
+  .card-note {
+    font-size: 11px;
+    color: var(--text-sub);
+    margin-top: 4px;
+  }
+
+  /* Sitemap tree */
+  .sitemap {
+    margin: 20px 0;
+    font-family: 'Noto Sans JP', monospace;
+    font-size: 13px;
+  }
+
+  .sitemap-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(42,42,42,0.5);
+  }
+
+  .sitemap-path {
+    flex: 0 0 180px;
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  .sitemap-name {
+    flex: 0 0 160px;
+    color: var(--text-sub);
+    font-size: 12px;
+  }
+
+  .sitemap-source {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  /* Flow diagram */
+  .flow {
+    margin: 24px 0;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+  }
+
+  .flow-box {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .flow-arrow {
+    color: var(--text-sub);
+    font-size: 16px;
+  }
+
+  .flow-api { background: rgba(59,130,246,0.15); color: #60A5FA; border: 1px solid rgba(59,130,246,0.3); }
+  .flow-db { background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(16,185,129,0.3); }
+  .flow-site { background: rgba(229,9,20,0.15); color: #FF6B6B; border: 1px solid rgba(229,9,20,0.3); }
+  .flow-cdn { background: rgba(168,85,247,0.15); color: #C084FC; border: 1px solid rgba(168,85,247,0.3); }
+
+  /* Bar chart */
+  .bar-chart { margin: 20px 0; }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+  }
+
+  .bar-label {
+    flex: 0 0 120px;
+    font-size: 12px;
+    color: var(--text-sub);
+    text-align: right;
+    padding-right: 12px;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 24px;
+    background: rgba(42,42,42,0.5);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: white;
+    transition: width 0.6s ease;
+  }
+
+  .bar-api { background: linear-gradient(90deg, #3B82F6, #60A5FA); }
+  .bar-hard { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+  .bar-settings { background: linear-gradient(90deg, #10B981, #34D399); }
+
+  /* Status indicator */
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .status-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+
+  .dot-green { background: #34D399; }
+  .dot-yellow { background: #FBBF24; }
+  .dot-gray { background: #6B7280; }
+
+  /* Donut chart - CSS only */
+  .donut-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 24px 0;
+  }
+
+  .donut {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .donut-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .donut-center-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .donut-center-label {
+    font-size: 10px;
+    color: var(--text-sub);
+    letter-spacing: 1px;
+  }
+
+  .donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .legend-label { color: var(--text-sub); }
+  .legend-value { color: var(--text-main); font-weight: 500; margin-left: auto; padding-left: 16px; }
+
+  /* Note box */
+  .note {
+    background: rgba(229,9,20,0.05);
+    border-left: 3px solid var(--neos-red);
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 12px;
+    color: var(--text-sub);
+  }
+
+  .note strong { color: var(--text-main); }
+
+  /* Print */
+  @media print {
+    body { background: #111; }
+    .page { padding: 40px 30px; }
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neos-red), transparent);
+    margin: 40px 0;
+  }
+
+  .footer-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-sub);
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== PAGE 1: COVER ===== -->
+<div class="page cover">
+  <div class="cover-badge">Site Architecture Report</div>
+  <h1><span>NEOS E-SPORTS</span></h1>
+  <h1>公式サイト 構成レポート</h1>
+  <h2>サイト構成・データソース・運用状況</h2>
+  <div class="cover-line"></div>
+  <div class="cover-meta">
+    作成日：2026年3月9日<br>
+    対象URL：https://neos-esports.com<br>
+    制作・運用：ICC / NEOS E-SPORTS<br>
+    技術基盤：Next.js 16 + Tailwind CSS v4 + Vercel
+  </div>
+</div>
+
+<!-- ===== PAGE 2: OVERVIEW ===== -->
+<div class="page">
+  <div class="section-num">Section 01</div>
+  <h2 class="section-title">サイト概要</h2>
+  <p class="section-subtitle">Overview &amp; Key Metrics</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Total Pages</div>
+      <div class="card-value">12<span> ページ</span></div>
+      <div class="card-note">動的ページ含む（選手詳細・記事詳細）</div>
+    </div>
+    <div class="card">
+      <div class="card-label">API Endpoints</div>
+      <div class="card-value">8<span> 本</span></div>
+      <div class="card-note">管理アプリ（neos-player-app）から取得</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Components</div>
+      <div class="card-value">16<span> 個</span></div>
+      <div class="card-note">共通UI・ページ固有含む</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Cache Strategy</div>
+      <div class="card-value">ISR<span> 10s</span></div>
+      <div class="card-note">10秒ごとにバックグラウンド再検証</div>
+    </div>
+  </div>
+
+  <h3>システム構成図</h3>
+
+  <div class="flow">
+    <div class="flow-row">
+      <div class="flow-box flow-db">Supabase<br><small>PostgreSQL + Storage</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box flow-api">neos-player-app<br><small>管理アプリ / API</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box flow-site">neos-official-site<br><small>公式サイト（本レポート対象）</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box flow-cdn">Vercel Edge<br><small>CDN + ISR</small></div>
+    </div>
+    <div style="margin-top: 12px; font-size: 11px; color: var(--text-sub); text-align: center;">
+      データベース → API サーバー → フロントエンド → CDN配信（10秒キャッシュ）
+    </div>
+  </div>
+
+  <h3>データソース構成比</h3>
+  <p>全12ページのコンテンツソース内訳</p>
+
+  <div class="donut-container">
+    <!-- CSS conic-gradient donut -->
+    <div class="donut" style="background: conic-gradient(
+      #3B82F6 0deg 150deg,
+      #10B981 150deg 210deg,
+      #F59E0B 210deg 360deg
+    );">
+      <div style="position:absolute;top:15px;left:15px;right:15px;bottom:15px;border-radius:50%;background:var(--bg-dark);"></div>
+      <div class="donut-center">
+        <div class="donut-center-value">12</div>
+        <div class="donut-center-label">PAGES</div>
+      </div>
+    </div>
+    <div class="donut-legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#3B82F6;"></div>
+        <span class="legend-label">API連携（動的データ）</span>
+        <span class="legend-value">5 ページ</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#10B981;"></div>
+        <span class="legend-label">API + ハードコード混在</span>
+        <span class="legend-value">2 ページ</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#F59E0B;"></div>
+        <span class="legend-label">ハードコード（静的）</span>
+        <span class="legend-value">5 ページ</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 3: SITEMAP ===== -->
+<div class="page">
+  <div class="section-num">Section 02</div>
+  <h2 class="section-title">サイトマップ</h2>
+  <p class="section-subtitle">Page Structure &amp; Data Sources</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>URL</th>
+        <th>ページ名</th>
+        <th>データソース</th>
+        <th>状態</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>/</code></td>
+        <td>トップページ</td>
+        <td>
+          <span class="tag tag-api">API</span>
+          <span class="tag tag-settings">Settings</span>
+        </td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/members</code></td>
+        <td>選手一覧</td>
+        <td><span class="tag tag-api">API</span></td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/members/[id]</code></td>
+        <td>選手詳細</td>
+        <td>
+          <span class="tag tag-api">API</span>
+          <span class="tag tag-dynamic">動的生成</span>
+        </td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/news</code></td>
+        <td>ニュース一覧</td>
+        <td>
+          <span class="tag tag-api">API</span>
+          <span class="tag tag-dynamic">動的生成</span>
+        </td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/news/[slug]</code></td>
+        <td>記事詳細</td>
+        <td>
+          <span class="tag tag-api">API</span>
+          <span class="tag tag-dynamic">動的生成</span>
+        </td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/about</code></td>
+        <td>チーム概要</td>
+        <td>
+          <span class="tag tag-settings">Settings</span>
+          <span class="tag tag-hard">デフォルト値あり</span>
+        </td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/scrim</code></td>
+        <td>スクリム紹介</td>
+        <td><span class="tag tag-hard">ハードコード</span></td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/partners</code></td>
+        <td>パートナー企業</td>
+        <td>
+          <span class="tag tag-api">API</span>
+          <span class="tag tag-hard">CTA固定</span>
+        </td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/partners/program</code></td>
+        <td>パートナーシップ<br>プログラム</td>
+        <td><span class="tag tag-hard">ハードコード</span></td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/contact</code></td>
+        <td>お問い合わせ</td>
+        <td>
+          <span class="tag tag-api">API (POST)</span>
+          <span class="tag tag-settings">Settings</span>
+        </td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/store</code></td>
+        <td>ストア</td>
+        <td><span class="tag tag-hard">ハードコード</span></td>
+        <td><span class="tag tag-coming">COMING SOON</span></td>
+      </tr>
+      <tr>
+        <td><code>/terms</code></td>
+        <td>利用規約</td>
+        <td><span class="tag tag-hard">ハードコード</span></td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+      <tr>
+        <td><code>/privacy</code></td>
+        <td>プライバシーポリシー</td>
+        <td><span class="tag tag-hard">ハードコード</span></td>
+        <td><span class="tag tag-done">公開中</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>データソースの凡例</strong><br>
+    <span class="tag tag-api">API</span> 管理アプリからリアルタイム取得（管理画面で変更可能）<br>
+    <span class="tag tag-settings">Settings</span> サイト設定テーブルから取得（管理画面で変更可能）<br>
+    <span class="tag tag-hard">ハードコード</span> ソースコードに直接記述（変更にはコード修正が必要）<br>
+    <span class="tag tag-dynamic">動的生成</span> URLパラメータに応じてページが自動生成
+  </div>
+</div>
+
+<!-- ===== PAGE 4: API DETAIL ===== -->
+<div class="page">
+  <div class="section-num">Section 03</div>
+  <h2 class="section-title">API連携の詳細</h2>
+  <p class="section-subtitle">Data from neos-player-app (Management App)</p>
+
+  <p>公式サイトは管理アプリ（neos-player-app）の公開APIからデータを取得しています。<br>
+  管理アプリで登録・編集したデータが、自動的に公式サイトに反映されます。</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>API</th>
+        <th>取得データ</th>
+        <th>表示先ページ</th>
+        <th>更新方法</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>/api/public/players</code></td>
+        <td>選手一覧（名前、カテゴリ、画像、PR順位等）</td>
+        <td>トップ、/members</td>
+        <td>管理アプリ「選手管理」</td>
+      </tr>
+      <tr>
+        <td><code>/api/public/players/[id]</code></td>
+        <td>選手詳細（画像ギャラリー、大会実績含む）</td>
+        <td>/members/[id]</td>
+        <td>管理アプリ「選手詳細」</td>
+      </tr>
+      <tr>
+        <td><code>/api/public/articles</code></td>
+        <td>記事一覧（タイトル、サムネイル、カテゴリ）</td>
+        <td>トップ、/news</td>
+        <td>管理アプリ「記事管理」</td>
+      </tr>
+      <tr>
+        <td><code>/api/public/articles/[slug]</code></td>
+        <td>記事詳細（Markdown本文、前後記事）</td>
+        <td>/news/[slug]</td>
+        <td>管理アプリ「記事編集」</td>
+      </tr>
+      <tr>
+        <td><code>/api/public/sponsors</code></td>
+        <td>スポンサー一覧（ロゴ、ティア、リンク）</td>
+        <td>トップ、/partners</td>
+        <td>管理アプリ「スポンサー管理」</td>
+      </tr>
+      <tr>
+        <td><code>/api/public/tournaments</code></td>
+        <td>大会実績（順位、キル数、賞金）</td>
+        <td>/members/[id]</td>
+        <td>管理アプリ「大会管理」</td>
+      </tr>
+      <tr>
+        <td><code>/api/public/site-settings</code></td>
+        <td>サイト設定（ヒーロー画像、About文等）</td>
+        <td>全ページ</td>
+        <td>管理アプリ「サイト設定」</td>
+      </tr>
+      <tr>
+        <td><code>/api/public/contact</code></td>
+        <td>問い合わせ送信（入隊希望・一般）</td>
+        <td>/contact</td>
+        <td>—（送信専用）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>管理アプリから変更可能な項目</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>設定キー</th>
+        <th>内容</th>
+        <th>反映先</th>
+        <th>設定状態</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>hero_title</code></td>
+        <td>トップページの大見出し</td>
+        <td>トップ Hero</td>
+        <td><span class="tag tag-done">設定済</span></td>
+      </tr>
+      <tr>
+        <td><code>hero_subtitle</code></td>
+        <td>トップページのサブタイトル</td>
+        <td>トップ Hero</td>
+        <td><span class="tag tag-done">設定済</span></td>
+      </tr>
+      <tr>
+        <td><code>hero_image_url</code></td>
+        <td>ヒーロー背景画像</td>
+        <td>トップ Hero</td>
+        <td><span class="tag tag-done">対応済</span></td>
+      </tr>
+      <tr>
+        <td><code>about_text</code></td>
+        <td>チーム概要の全文（Markdown）</td>
+        <td>/about</td>
+        <td><span class="tag tag-done">設定済</span></td>
+      </tr>
+      <tr>
+        <td><code>uniform_image_url</code></td>
+        <td>ユニフォーム画像</td>
+        <td>トップ</td>
+        <td><span class="tag tag-done">対応済</span></td>
+      </tr>
+      <tr>
+        <td><code>x_url</code></td>
+        <td>NEOS公式XアカウントURL</td>
+        <td>フッター</td>
+        <td><span class="tag tag-done">設定済</span></td>
+      </tr>
+      <tr>
+        <td><code>junior_x_url</code></td>
+        <td>ジュニアXアカウントURL</td>
+        <td>フッター</td>
+        <td><span class="tag tag-done">設定済</span></td>
+      </tr>
+      <tr>
+        <td><code>nav_hidden_items</code></td>
+        <td>非表示にするナビ項目</td>
+        <td>ヘッダー・フッター</td>
+        <td><span class="tag tag-done">対応済</span></td>
+      </tr>
+      <tr>
+        <td><code>enrollment_open</code></td>
+        <td>入隊受付のON/OFF</td>
+        <td>/contact</td>
+        <td><span class="tag tag-done">対応済</span></td>
+      </tr>
+      <tr>
+        <td><code>enrollment_closed_message</code></td>
+        <td>受付停止時のメッセージ</td>
+        <td>/contact</td>
+        <td><span class="tag tag-done">対応済</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== PAGE 5: HARDCODED CONTENT ===== -->
+<div class="page">
+  <div class="section-num">Section 04</div>
+  <h2 class="section-title">ハードコードコンテンツ</h2>
+  <p class="section-subtitle">Content Requiring Code Changes</p>
+
+  <p>以下のコンテンツはソースコードに直接記述されており、変更するにはコード修正とデプロイが必要です。</p>
+
+  <h3>スクリムページ（/scrim）</h3>
+  <table>
+    <thead>
+      <tr><th>項目</th><th>現在の値</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>APF SCRIM 説明文</td>
+        <td class="td-sub">サブタイトル「週末の朝に、実戦を」＋ 説明3段落</td>
+      </tr>
+      <tr>
+        <td>APF SCRIM 実施日</td>
+        <td>毎週末</td>
+      </tr>
+      <tr>
+        <td>APF SCRIM リンク</td>
+        <td class="td-sub">X: @APF0401 / Discord / YouTube: @nakasanta</td>
+      </tr>
+      <tr>
+        <td>JUNIOR SCRIM 説明文</td>
+        <td class="td-sub">サブタイトル「同じ世代で、競い合う」＋ 説明3段落</td>
+      </tr>
+      <tr>
+        <td>JUNIOR SCRIM 実施日</td>
+        <td>毎週 月・水曜</td>
+      </tr>
+      <tr>
+        <td>JUNIOR SCRIM リンク</td>
+        <td class="td-sub">X: @neosclan_u13 / Discord / YouTube: @akigori-555</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>パートナーシッププログラム（/partners/program）</h3>
+  <table>
+    <thead>
+      <tr><th>項目</th><th>現在の値</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ティア構成</td>
+        <td class="td-sub">6段階：UNREAL（1社限定）/ CHAMPION（3社限定）/ DIAMOND / PLATINUM / GOLD / SILVER</td>
+      </tr>
+      <tr>
+        <td>特典テーブル</td>
+        <td class="td-sub">9項目 × 6ティアの比較表</td>
+      </tr>
+      <tr>
+        <td>統計数字</td>
+        <td class="td-sub">57+ 所属選手 / 7,100+ フォロワー / 300+ スクリム参加者 / 170,000+ 月間インプレッション</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>利用規約・プライバシーポリシー</h3>
+  <table>
+    <thead>
+      <tr><th>ページ</th><th>内容</th><th>制定日</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>/terms</td>
+        <td class="td-sub">全9条（適用範囲、知的財産権、禁止事項、未成年利用、個人情報、外部リンク、免責事項、規約改定、準拠法）</td>
+        <td>2026年3月5日</td>
+      </tr>
+      <tr>
+        <td>/privacy</td>
+        <td class="td-sub">全8項（運営者情報、収集情報11項目、利用目的、Cookie・GA4、第三者提供、未成年者、開示・訂正・削除、改定）</td>
+        <td>2026年3月5日</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>ストア（/store）</h3>
+  <p>「COMING SOON」のプレースホルダー表示。検索エンジンからは除外設定済み（noindex）。<br>
+  Stripe審査完了後に実装予定。</p>
+
+  <h3>トップページ AboutPreview セクション</h3>
+  <p>「人が成長する結果として、競技力が高まる」等のコピーがハードコード。<br>
+  /about ページへの導線として機能。</p>
+</div>
+
+<!-- ===== PAGE 6: PAGE DETAILS ===== -->
+<div class="page">
+  <div class="section-num">Section 05</div>
+  <h2 class="section-title">ページ別 機能詳細</h2>
+  <p class="section-subtitle">Feature Breakdown by Page</p>
+
+  <h3>トップページ（/）</h3>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">Hero</div>
+      <div class="bar-track"><div class="bar-fill bar-settings" style="width:100%;">site_settings</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">About Preview</div>
+      <div class="bar-track"><div class="bar-fill bar-hard" style="width:100%;">ハードコード</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">選手ハイライト</div>
+      <div class="bar-track"><div class="bar-fill bar-api" style="width:100%;">API（上位6名を自動選出）</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">ニュース</div>
+      <div class="bar-track"><div class="bar-fill bar-api" style="width:100%;">API（最新3件）</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">スポンサー</div>
+      <div class="bar-track"><div class="bar-fill bar-api" style="width:100%;">API（データなし時は非表示）</div></div>
+    </div>
+  </div>
+
+  <h3>選手一覧（/members）</h3>
+  <ul>
+    <li>APIから全選手を取得し、5カテゴリに自動分類表示</li>
+    <li>表示順：ATHLETE → GROWTH → YOUTH → JUNIOR → STAFF</li>
+    <li>同カテゴリ内：PR順位が低い順（=上位選手が先）→ 名前順</li>
+    <li>カテゴリフィルタボタンで絞り込み可能</li>
+    <li>英語名（name_en）を主表示</li>
+  </ul>
+
+  <h3>選手詳細（/members/[id]）</h3>
+  <ul>
+    <li>画像ギャラリー（メイン画像 + サムネイルグリッド）</li>
+    <li>プロフィール情報（背番号、PR順位、獲得賞金、加入日）</li>
+    <li>自由記述テキスト（profile, achievements）</li>
+    <li>大会実績テーブル（順位3位以内は赤色ハイライト）</li>
+    <li>X（Twitter）アカウントリンク</li>
+    <li>OGP自動生成（選手名 + カテゴリ + 画像）</li>
+  </ul>
+
+  <h3>ニュース一覧（/news）</h3>
+  <ul>
+    <li>15件/ページのページネーション</li>
+    <li>3カテゴリフィルタ：NEWS / BLOG / RESULT</li>
+    <li>サムネイル付きカード表示</li>
+  </ul>
+
+  <h3>記事詳細（/news/[slug]）</h3>
+  <ul>
+    <li>Markdown形式の本文をHTMLにレンダリング</li>
+    <li>フルブリードサムネイル画像</li>
+    <li>X（Twitter）シェアボタン + URLコピー機能</li>
+    <li>前後の記事ナビゲーション</li>
+    <li>OGP自動生成（記事タイトル + サムネイル画像）</li>
+  </ul>
+
+  <h3>お問い合わせ（/contact）</h3>
+  <ul>
+    <li>2種類のフォーム切替：入隊希望（JOIN）/ 一般問い合わせ（GENERAL）</li>
+    <li>入隊受付のON/OFFは管理アプリの site_settings で制御</li>
+    <li>入隊フォーム：16項目（活動名、希望部門、年齢、Epic ID、X ID、デバイス等）</li>
+    <li>13歳未満は保護者同意が必須</li>
+    <li>送信データは管理アプリに保存</li>
+  </ul>
+</div>
+
+<!-- ===== PAGE 7: SEO & TECHNICAL ===== -->
+<div class="page">
+  <div class="section-num">Section 06</div>
+  <h2 class="section-title">SEO・技術仕様</h2>
+  <p class="section-subtitle">SEO, Security &amp; Performance</p>
+
+  <h3>SEO対策</h3>
+  <table>
+    <thead>
+      <tr><th>項目</th><th>実装状況</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>OGP（Open Graph）</td>
+        <td><span class="tag tag-done">実装済</span> 全ページに設定。記事・選手ページは動的OGP</td>
+      </tr>
+      <tr>
+        <td>Twitter Card</td>
+        <td><span class="tag tag-done">実装済</span> summary_large_image</td>
+      </tr>
+      <tr>
+        <td>構造化データ（Schema.org）</td>
+        <td><span class="tag tag-done">実装済</span> SportsTeam + FAQPage</td>
+      </tr>
+      <tr>
+        <td>Google Search Console</td>
+        <td><span class="tag tag-done">認証済</span></td>
+      </tr>
+      <tr>
+        <td>メタディスクリプション</td>
+        <td><span class="tag tag-done">実装済</span> 全ページに個別設定</td>
+      </tr>
+      <tr>
+        <td>noindex 制御</td>
+        <td><span class="tag tag-done">実装済</span> /store のみ noindex</td>
+      </tr>
+      <tr>
+        <td>正規URL（canonical）</td>
+        <td><span class="tag tag-done">実装済</span> metadataBase: neos-esports.com</td>
+      </tr>
+      <tr>
+        <td>www リダイレクト</td>
+        <td><span class="tag tag-done">実装済</span> www → non-www（301）</td>
+      </tr>
+      <tr>
+        <td>LLM対応（llms.txt）</td>
+        <td><span class="tag tag-done">実装済</span> AIクローラー用メタデータ</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>セキュリティヘッダ</h3>
+  <table>
+    <thead>
+      <tr><th>ヘッダ</th><th>値</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>X-Content-Type-Options</td><td>nosniff</td></tr>
+      <tr><td>X-Frame-Options</td><td>DENY</td></tr>
+      <tr><td>X-XSS-Protection</td><td>1; mode=block</td></tr>
+      <tr><td>Referrer-Policy</td><td>strict-origin-when-cross-origin</td></tr>
+      <tr><td>Permissions-Policy</td><td>camera=(), microphone=(), geolocation=()</td></tr>
+    </tbody>
+  </table>
+
+  <h3>パフォーマンス</h3>
+  <table>
+    <thead>
+      <tr><th>項目</th><th>設定</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>レンダリング方式</td><td>ISR（Incremental Static Regeneration）10秒</td></tr>
+      <tr><td>CDN</td><td>Vercel Edge Network（グローバル配信）</td></tr>
+      <tr><td>フォント最適化</td><td>Google Fonts（Bebas Neue + Noto Sans JP）、Next.js自動最適化</td></tr>
+      <tr><td>画像</td><td>Supabase Storage（選手画像）+ ローカル（ロゴ・スクリム画像）</td></tr>
+      <tr><td>アニメーション</td><td>Intersection Observer による遅延読み込み</td></tr>
+    </tbody>
+  </table>
+
+  <h3>アクセス解析</h3>
+  <table>
+    <thead>
+      <tr><th>ツール</th><th>ID</th><th>状態</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Google Analytics 4</td>
+        <td class="td-sub">G-BJ6ZKWQ6PN</td>
+        <td><span class="tag tag-done">稼働中</span></td>
+      </tr>
+      <tr>
+        <td>Vercel Analytics</td>
+        <td class="td-sub">自動</td>
+        <td><span class="tag tag-done">稼働中</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== PAGE 8: DESIGN SYSTEM ===== -->
+<div class="page">
+  <div class="section-num">Section 07</div>
+  <h2 class="section-title">デザインシステム</h2>
+  <p class="section-subtitle">Visual Identity &amp; Brand Guidelines</p>
+
+  <h3>カラーパレット</h3>
+  <table>
+    <thead>
+      <tr><th>用途</th><th>カラーコード</th><th>プレビュー</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>NEOS Red（Primary）</td>
+        <td><code>#E50914</code></td>
+        <td><div style="width:80px;height:24px;background:#E50914;border-radius:3px;"></div></td>
+      </tr>
+      <tr>
+        <td>NEOS Red Bright</td>
+        <td><code>#FF1A25</code></td>
+        <td><div style="width:80px;height:24px;background:#FF1A25;border-radius:3px;"></div></td>
+      </tr>
+      <tr>
+        <td>NEOS Red Dark</td>
+        <td><code>#B20710</code></td>
+        <td><div style="width:80px;height:24px;background:#B20710;border-radius:3px;"></div></td>
+      </tr>
+      <tr>
+        <td>背景</td>
+        <td><code>#0A0A0A</code></td>
+        <td><div style="width:80px;height:24px;background:#0A0A0A;border-radius:3px;border:1px solid #333;"></div></td>
+      </tr>
+      <tr>
+        <td>カード背景</td>
+        <td><code>#1A1A1A</code></td>
+        <td><div style="width:80px;height:24px;background:#1A1A1A;border-radius:3px;border:1px solid #333;"></div></td>
+      </tr>
+      <tr>
+        <td>テキスト</td>
+        <td><code>#FFFFFF</code></td>
+        <td><div style="width:80px;height:24px;background:#FFFFFF;border-radius:3px;"></div></td>
+      </tr>
+      <tr>
+        <td>サブテキスト</td>
+        <td><code>#9CA3AF</code></td>
+        <td><div style="width:80px;height:24px;background:#9CA3AF;border-radius:3px;"></div></td>
+      </tr>
+      <tr>
+        <td>ボーダー</td>
+        <td><code>#2A2A2A</code></td>
+        <td><div style="width:80px;height:24px;background:#2A2A2A;border-radius:3px;border:1px solid #333;"></div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>フォント</h3>
+  <table>
+    <thead>
+      <tr><th>用途</th><th>フォント</th><th>ウェイト</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>見出し・ナビゲーション</td>
+        <td>Bebas Neue（Google Fonts）</td>
+        <td>400</td>
+      </tr>
+      <tr>
+        <td>本文・UI</td>
+        <td>Noto Sans JP（Google Fonts）</td>
+        <td>300 / 400 / 500 / 700</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>デザインコンセプト</h3>
+  <ul>
+    <li>Netflix風ダークテーマ（ライトテーマなし）</li>
+    <li>高コントラスト赤 × 黒のカラースキーム</li>
+    <li>ZETA DIVISIONを参考にしたミニマルで洗練されたデザイン</li>
+    <li>Intersection Observerによるスクロール連動フェードインアニメーション</li>
+    <li>赤は「攻撃」ではなく「情熱・本気」のアクセントカラー</li>
+  </ul>
+
+  <h3>UIコンポーネント一覧（16個）</h3>
+  <table>
+    <thead>
+      <tr><th>カテゴリ</th><th>コンポーネント</th><th>用途</th></tr>
+    </thead>
+    <tbody>
+      <tr><td rowspan="3">共通</td><td>AnimateIn</td><td>スクロール連動フェードイン</td></tr>
+      <tr><td>SectionHeading</td><td>セクション見出し（赤ライン装飾）</td></tr>
+      <tr><td>SectionDivider</td><td>セクション区切り線</td></tr>
+      <tr><td rowspan="2">レイアウト</td><td>Header</td><td>固定ヘッダー + ハンバーガーメニュー</td></tr>
+      <tr><td>Footer</td><td>ナビ + SNSリンク + 規約リンク</td></tr>
+      <tr><td rowspan="6">トップページ</td><td>Hero</td><td>フルスクリーンヒーロー</td></tr>
+      <tr><td>AboutPreview</td><td>About要約セクション</td></tr>
+      <tr><td>PlayerHighlight</td><td>選手ハイライト（6名）</td></tr>
+      <tr><td>NewsPreview</td><td>最新ニュース（3件）</td></tr>
+      <tr><td>SponsorSection</td><td>スポンサーロゴ表示</td></tr>
+      <tr><td>UniformSection</td><td>ユニフォーム画像紹介</td></tr>
+      <tr><td>選手</td><td>PlayerFilter</td><td>カテゴリ別フィルタ・一覧表示</td></tr>
+      <tr><td rowspan="2">記事</td><td>ArticleCard</td><td>ニュースカード</td></tr>
+      <tr><td>ShareButtons</td><td>Xシェア + URLコピー</td></tr>
+      <tr><td>フォーム</td><td>ContactForm</td><td>入隊希望 / 一般問い合わせ</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== PAGE 9: STATUS SUMMARY ===== -->
+<div class="page">
+  <div class="section-num">Section 08</div>
+  <h2 class="section-title">現在のステータス</h2>
+  <p class="section-subtitle">Current Status &amp; Pending Items</p>
+
+  <h3>ページ公開状況</h3>
+
+  <div class="status-grid">
+    <div class="status-item">
+      <div><span class="status-dot dot-green"></span>公開中</div>
+      <div style="font-size:28px;font-weight:700;margin:8px 0;">11</div>
+      <div class="td-sub">ページ</div>
+    </div>
+    <div class="status-item">
+      <div><span class="status-dot dot-yellow"></span>準備中</div>
+      <div style="font-size:28px;font-weight:700;margin:8px 0;">1</div>
+      <div class="td-sub">ページ（Store）</div>
+    </div>
+    <div class="status-item">
+      <div><span class="status-dot dot-gray"></span>確認待ち</div>
+      <div style="font-size:28px;font-weight:700;margin:8px 0;">1</div>
+      <div class="td-sub">件（味の素掲載）</div>
+    </div>
+  </div>
+
+  <h3>確認待ち・保留事項</h3>
+  <table>
+    <thead>
+      <tr><th>項目</th><th>内容</th><th>状態</th><th>担当/待ち先</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>味の素ゲームサポーターズ</td>
+        <td>パートナーページへのロゴ・紹介文掲載可否</td>
+        <td><span class="tag tag-pending">確認待ち</span></td>
+        <td>野中さん（3/7〜）</td>
+      </tr>
+      <tr>
+        <td>ストアページ</td>
+        <td>EC機能（Stripe Checkout方式）の実装</td>
+        <td><span class="tag tag-pending">審査待ち</span></td>
+        <td>Stripe本人確認</td>
+      </tr>
+      <tr>
+        <td>パートナーシップLP</td>
+        <td>テキスト・特典内容の最終確定と公開判断</td>
+        <td><span class="tag tag-pending">レビュー待ち</span></td>
+        <td>運営</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>運用における変更の仕方 まとめ</h3>
+
+  <div class="note">
+    <strong>管理アプリで変更できるもの（コード修正不要）</strong><br>
+    選手情報、ニュース記事、スポンサー、ヒーロー画像・テキスト、About文、入隊受付ON/OFF、SNSリンク、ナビ項目の表示/非表示
+  </div>
+
+  <div class="note" style="border-left-color: #F59E0B;">
+    <strong>コード修正が必要なもの（開発者に依頼）</strong><br>
+    スクリムページの説明文・リンク、パートナーシッププログラムのティア・特典内容、利用規約・プライバシーポリシー、ストア機能の追加、新規ページの追加
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="footer-note">
+    NEOS E-SPORTS Site Architecture Report — Confidential<br>
+    Generated: 2026-03-09 | neos-esports.com
+  </div>
+</div>
+
+</body>
+</html>
