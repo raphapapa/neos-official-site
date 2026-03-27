@@ -9,6 +9,7 @@ type FormType = "JOIN" | "GENERAL";
 interface ContactFormProps {
   enrollmentOpen: boolean;
   enrollmentClosedMessage: string;
+  defaultFormType?: "JOIN" | "GENERAL";
 }
 
 const DIVISIONS = [
@@ -27,8 +28,8 @@ const TRACKER_REQUIRED_DIVISIONS = [
 
 const DEVICES = ["PC", "PS4・PS5・XBOX", "スイッチ", "その他"];
 
-export function ContactForm({ enrollmentOpen, enrollmentClosedMessage }: ContactFormProps) {
-  const [formType, setFormType] = useState<FormType>("GENERAL");
+export function ContactForm({ enrollmentOpen, enrollmentClosedMessage, defaultFormType = "GENERAL" }: ContactFormProps) {
+  const [formType, setFormType] = useState<FormType>(defaultFormType);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");

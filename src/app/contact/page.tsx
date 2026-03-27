@@ -10,9 +10,16 @@ export const metadata: Metadata = {
     "NEOS E-SPORTSへの入隊希望・スポンサーシップ・パートナーシップのお問い合わせはこちらから。",
 };
 
-export default async function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ ref?: string }>;
+}) {
+  const params = await searchParams;
+  const isStaffRef = params.ref === "staff";
+
   const settings = await getSiteSettings();
-  const enrollmentOpen = settings.enrollment_open === "true";
+  const enrollmentOpen = isStaffRef || settings.enrollment_open === "true";
   const enrollmentClosedMessage =
     settings.enrollment_closed_message ||
     "現在、入隊希望の受付を行っておりません。次回の募集開始までお待ちください。";
@@ -36,6 +43,7 @@ export default async function ContactPage() {
           <ContactForm
             enrollmentOpen={enrollmentOpen}
             enrollmentClosedMessage={enrollmentClosedMessage}
+            defaultFormType={isStaffRef ? "JOIN" : "GENERAL"}
           />
         </AnimateIn>
       </div>
