@@ -49,20 +49,20 @@ export default function TrophySeikatsuPage() {
                 </h3>
                 <div className="space-y-4 text-sub-text text-sm leading-relaxed">
                   <p>
-                    トロフィー生活は、「おめでとう」や「ありがとう」といった想いを形にし、日本に表彰文化を広めることを目指すブランドです
+                    トロフィー生活では各種大会向け、社内表彰向け、プレゼント用などで表彰品をご用意しております。
                   </p>
                   <p>
-                    トロフィーや賞状、メダルなどの表彰品を通じて、賞賛される喜びを一人でも多くの人へ届けることを大切にしています
+                    また、esports大会向けにもお買い求めやすい商品がございます。
                   </p>
                   <p>
-                    表彰品を通じて、お祝いや感謝の気持ちを形にし、贈る人と贈られる人の双方に喜びを届けることを目指しています
+                    表彰品を用意したいけど良く分からない、心配な点がある、などあればお気軽にご相談ください。
                   </p>
                 </div>
 
                 {/* SNS・サイトリンク */}
                 <div className="mt-8 flex flex-wrap items-center gap-6 justify-center md:justify-start">
                   <a
-                    href="https://x.com/tachikawakeiho1"
+                    href="https://x.com/tachikawakisho1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sub-text hover:text-white transition-colors text-sm"
@@ -74,10 +74,10 @@ export default function TrophySeikatsuPage() {
                     >
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
-                    <span>@tachikawakeiho1</span>
+                    <span>@tachikawakisho1</span>
                   </a>
                   <a
-                    href="https://trophy-seikatsu.com"
+                    href="https://www.trophy-seikatsu.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sub-text hover:text-white transition-colors text-sm"
