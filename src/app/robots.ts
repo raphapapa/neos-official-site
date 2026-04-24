@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/coaching-trial-zerofour/',
+      disallow: '/coaching-trial-zerofour',
     },
     sitemap: 'https://neos-esports.com/sitemap.xml',
   }
