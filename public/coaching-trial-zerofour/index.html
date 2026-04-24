@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NEOS COACHING TRIAL | zerofourと大会の現場で強くなる</title>
+<meta name="description" content="5/4-5 FNCS Divisional Cup (Div2/3) 出場者向け。元NEOS競技選手 zerofour による大会同行型コーチング。お試し期間につき無料。" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="googlebot" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #141414;
+    --red: #e10600;
+    --red-dark: #8a0400;
+    --text: #f2f2f2;
+    --text-dim: #a0a0a0;
+    --line: #2a2a2a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  .display { font-family: "Oswald", "Noto Sans JP", sans-serif; letter-spacing: 0.04em; }
+
+  /* ---------- Layout ---------- */
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; max-width: 1200px; margin: 0 auto; }
+  .brand { font-weight: 900; letter-spacing: 0.15em; font-size: 14px; }
+  .brand span { color: var(--red); }
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  .header-tag {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+  .header-tag .label {
+    color: var(--red);
+    margin-right: 8px;
+  }
+  @media (max-width: 720px) {
+    .header-tag { display: none; }
+  }
+  .nav-cta {
+    background: var(--red);
+    color: #fff;
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    border: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #ff1a0d; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(225,6,0,0.25) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(225,6,0,0.18) 0%, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(0,0,0,0.6) 0%, #000 100%);
+  }
+  .hero::before, .hero::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  /* Splatter shapes (CSS only) */
+  .hero::before {
+    top: -10%; left: -8%;
+    width: 50%; height: 70%;
+    background-image:
+      radial-gradient(ellipse 60px 30px at 30% 30%, var(--red) 50%, transparent 51%),
+      radial-gradient(ellipse 30px 18px at 50% 60%, var(--red-dark) 50%, transparent 51%),
+      radial-gradient(ellipse 12px 8px at 70% 40%, var(--red) 50%, transparent 51%),
+      radial-gradient(ellipse 80px 40px at 20% 70%, var(--red-dark) 50%, transparent 51%);
+    opacity: 0.35;
+    filter: blur(2px);
+  }
+  .hero::after {
+    bottom: -10%; right: -8%;
+    width: 55%; height: 70%;
+    background-image:
+      radial-gradient(ellipse 90px 45px at 60% 40%, var(--red) 50%, transparent 51%),
+      radial-gradient(ellipse 40px 25px at 30% 70%, var(--red-dark) 50%, transparent 51%),
+      radial-gradient(ellipse 20px 12px at 80% 30%, var(--red) 50%, transparent 51%);
+    opacity: 0.3;
+    filter: blur(2px);
+  }
+  .hero-inner { position: relative; z-index: 2; padding: 100px 24px; width: 100%; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 6px 14px;
+    margin-bottom: 28px;
+    font-weight: 700;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6.5vw, 78px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent { color: var(--red); }
+  .hero h1 .en {
+    display: block;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(48px, 9vw, 120px);
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+  .hero p.lead {
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: var(--text-dim);
+    max-width: 620px;
+    margin-bottom: 40px;
+  }
+  .cta-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--red);
+    color: #fff;
+    padding: 18px 36px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    border: 0;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+    box-shadow: 0 0 0 0 rgba(225,6,0,0.6);
+  }
+  .btn-primary:hover { background: #ff1a0d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(225,6,0,0.4); }
+  .btn-primary::after { content: "→"; font-size: 18px; }
+  .btn-ghost {
+    display: inline-flex; align-items: center;
+    color: var(--text);
+    padding: 18px 24px;
+    font-weight: 500;
+    font-size: 15px;
+    border: 1px solid var(--line);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--red); color: var(--red); }
+
+  .hero-meta {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .hero-meta .meta-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--red);
+    padding: 18px 20px;
+  }
+  .hero-meta .meta-label {
+    display: block;
+    font-family: "Oswald", sans-serif;
+    color: var(--red);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .hero-meta .meta-value {
+    display: block;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .hero-meta .meta-value .free {
+    color: var(--red);
+    font-family: "Oswald", sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+  }
+  .hero-meta .meta-sub {
+    display: block;
+    color: var(--text-dim);
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  /* ---------- Section ---------- */
+  section { padding: 100px 0; position: relative; }
+  .section-head { margin-bottom: 56px; }
+  .section-head .label {
+    font-family: "Oswald", sans-serif;
+    color: var(--red);
+    letter-spacing: 0.3em;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  .section-head h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 900;
+    line-height: 1.3;
+  }
+  .section-head h2 .bar {
+    display: inline-block;
+    width: 48px; height: 4px;
+    background: var(--red);
+    vertical-align: middle;
+    margin-right: 16px;
+  }
+  .section-head h2.oneline {
+    white-space: nowrap;
+    font-size: clamp(24px, 3.4vw, 38px);
+  }
+
+  /* Solve section */
+  .solve { background: var(--bg-2); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 36px 28px;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: var(--red); transform: translateY(-4px); }
+  .card .num {
+    font-family: "Oswald", sans-serif;
+    color: var(--red);
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+  .card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+  .card p { font-size: 14px; color: var(--text-dim); }
+
+  /* Coach */
+  .coach-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 64px;
+    align-items: stretch;
+  }
+  .coach-img-wrap {
+    position: relative;
+    border: 1px solid var(--red);
+    background: var(--bg-2);
+    overflow: hidden;
+    min-height: 560px;
+    box-shadow: 0 0 0 1px rgba(225,6,0,0.2), 0 24px 60px rgba(0,0,0,0.6);
+  }
+  .coach-img-wrap::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.5) 100%),
+      linear-gradient(180deg, transparent 70%, rgba(225,6,0,0.18) 100%);
+    z-index: 2; pointer-events: none;
+  }
+  .coach-img-wrap::after {
+    content: "ZEROFOUR";
+    position: absolute;
+    left: 24px; bottom: 20px;
+    font-family: "Oswald", sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #fff;
+    z-index: 3;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+  }
+  .coach-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .coach-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .coach-name {
+    font-family: "Oswald", sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .coach-name .nm { color: var(--red); }
+  .coach-role { color: var(--text-dim); font-size: 13px; letter-spacing: 0.2em; margin-bottom: 24px; }
+  .coach-bio { font-size: 15px; margin-bottom: 24px; }
+  .achievements {
+    background: linear-gradient(90deg, rgba(225,6,0,0.1), transparent);
+    border-left: 4px solid var(--red);
+    padding: 18px 22px;
+    margin-bottom: 24px;
+  }
+  .achievements-label {
+    font-family: "Oswald", sans-serif;
+    color: var(--red);
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .achievements-list { list-style: none; }
+  .achievements-list li {
+    display: flex; align-items: center; gap: 14px;
+    padding: 8px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .achievements-list li + li { border-top: 1px solid rgba(255,255,255,0.06); }
+  .achievements-list .rank {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    min-width: 44px; height: 32px;
+    background: var(--red);
+    color: #fff;
+    font-family: "Oswald", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0 10px;
+  }
+  .coach-stats { display: flex; gap: 24px; padding: 20px; border: 1px solid var(--line); margin-bottom: 24px; }
+  .coach-stats .stat strong { display: block; font-family: "Oswald", sans-serif; color: var(--red); font-size: 28px; line-height: 1; margin-bottom: 4px; }
+  .coach-stats .stat span { font-size: 12px; color: var(--text-dim); }
+  .tracker-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px;
+    color: var(--text);
+    border-bottom: 1px solid var(--red);
+    padding-bottom: 4px;
+    transition: color 0.2s;
+  }
+  .tracker-link:hover { color: var(--red); }
+
+  /* Style */
+  .style { background: var(--bg-2); }
+  .style-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .style-card { background: var(--bg); border-left: 4px solid var(--red); padding: 32px; }
+  .style-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+  .style-card p { color: var(--text-dim); font-size: 15px; }
+
+  /* Target */
+  .target-list { list-style: none; }
+  .target-list li {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+  }
+  .target-list li::before {
+    content: "✕";
+    color: var(--red);
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  /* Flow */
+  .flow { background: var(--bg-2); }
+  .flow-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .step {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 28px 20px;
+    position: relative;
+  }
+  .step .step-num {
+    font-family: "Oswald", sans-serif;
+    color: var(--red);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+  .step h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .step p { font-size: 13px; color: var(--text-dim); }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+  }
+  .faq summary {
+    cursor: pointer;
+    padding: 20px 24px;
+    font-weight: 700;
+    font-size: 15px;
+    list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+";
+    color: var(--red);
+    font-size: 24px;
+    line-height: 1;
+    transition: transform 0.2s;
+  }
+  .faq[open] summary::after { content: "−"; }
+  .faq summary:hover { color: var(--red); }
+  .faq .faq-body { padding: 0 24px 20px; color: var(--text-dim); font-size: 14px; }
+
+  /* Final CTA */
+  .final-cta {
+    background:
+      radial-gradient(circle at 50% 100%, rgba(225,6,0,0.3) 0%, transparent 60%),
+      var(--bg);
+    text-align: center;
+    padding: 120px 24px;
+  }
+  .final-cta h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .final-cta h2 .accent { color: var(--red); }
+  .final-cta p { color: var(--text-dim); margin-bottom: 36px; font-size: 16px; }
+  .final-cta .btn-primary { font-size: 18px; padding: 22px 48px; }
+
+  /* Footer */
+  footer {
+    background: #050505;
+    border-top: 1px solid var(--line);
+    padding: 32px 24px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  /* Responsive */
+  @media (max-width: 820px) {
+    .grid-3 { grid-template-columns: 1fr; }
+    .coach-grid { grid-template-columns: 1fr; gap: 32px; }
+    .coach-img-wrap { min-height: 420px; }
+    .coach-img-wrap::after { font-size: 22px; left: 18px; bottom: 14px; }
+    .coach-name { font-size: 44px; }
+    .style-grid { grid-template-columns: 1fr; gap: 20px; }
+    .flow-steps { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 72px 0; }
+    .nav-cta { padding: 8px 14px; font-size: 12px; }
+    .hero-meta { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .hero-meta .meta-value { font-size: 16px; }
+    .hero-meta .meta-value .free { font-size: 24px; }
+  }
+  @media (max-width: 480px) {
+    .flow-steps { grid-template-columns: 1fr; }
+    .coach-stats { flex-direction: column; gap: 16px; }
+    .hero-meta { grid-template-columns: 1fr; }
+  }
+
+  /* Sub-bullet list inside cards */
+  .card-sublist {
+    list-style: none;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .card-sublist li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 13px;
+    color: var(--text);
+    padding: 6px 0;
+  }
+  .card-sublist li::before {
+    content: ">";
+    color: var(--red);
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">NEOS<span>/</span>COACHING</div>
+    <div class="header-right">
+      <span class="header-tag"><span class="label">特別企画</span>NEOSコーチングプログラム トライアル</span>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVXYOuk7xTXSjb5y-EdagBJV45vrJjRb8cuKsF4vKl9Fg1dA/viewform?usp=dialog" target="_blank" rel="noopener" class="nav-cta">無料で申し込む</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner wrap">
+    <span class="eyebrow">FNCS DIVISIONAL CUP — TRIAL COACHING</span>
+    <h1>
+      <span class="en">WIN ON THE <span class="accent">FIELD.</span></span>
+      zerofourと、<br>大会の現場で強くなる。
+    </h1>
+    <p class="lead">
+      引退直後の元NEOS競技選手 <strong>zerofour</strong> が、5月のFNCS Divisional Cupに同行。
+      実戦のなかで立ち回り・対面コール・状況判断を直接伝える、お試しコーチングです。
+    </p>
+    <div class="cta-row">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVXYOuk7xTXSjb5y-EdagBJV45vrJjRb8cuKsF4vKl9Fg1dA/viewform?usp=dialog" target="_blank" rel="noopener" class="btn-primary">無料で申し込む</a>
+      <a href="#detail" class="btn-ghost">内容を見る</a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">EVENT</span>
+        <span class="meta-value">FNCS Divisional Cup<span class="meta-sub">Division 2 / Division 3</span></span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">DATE</span>
+        <span class="meta-value">5月4日・5日<span class="meta-sub">2026年（月・火）</span></span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">PRICE</span>
+        <span class="meta-value"><span class="free">FREE</span><span class="meta-sub">お試し期間につき無料</span></span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">AGE</span>
+        <span class="meta-value">13歳 〜 18歳<span class="meta-sub">競技志向プレイヤー</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLVE -->
+<section class="solve" id="detail">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">WHAT YOU LEARN</div>
+      <h2><span class="bar"></span>本講座で学べること。</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>リフレ視点での大会本番の立ち回り</h3>
+        <p>zerofourは撃ち合いのカバー（リフレ）を得意とする選手で、IGL（司令塔）ではありません。だからこそ、非IGL選手が大会本番で何を見て、どう動いているかを、リフレ視点で具体的に学べます。</p>
+        <ul class="card-sublist">
+          <li>リフレ視点での大会本番の立ち回り</li>
+          <li>非IGL選手が意識すべき視界・情報の取捨選択</li>
+          <li>IGLとの円滑な連携方法</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>トップ選手の実戦コールを生で体験</h3>
+        <p>大会本番では悠長に喋っている時間はありません。必要最低限の情報を、正確なタイミングでIGLや仲間に伝える——トップ選手が実際にどうコールを組み立てているかを、同じ試合のなかで生で体験できます。</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>大会終了後のまとめて振り返り</h3>
+        <p>試合直後ではなく、約3時間の大会1日がすべて終わった後にまとめて振り返ります。「何マッチ目のあの場面」を重点的に整理する形なので、効率よく学べて、大会中は試合そのものに集中できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COACH -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">COACH</div>
+      <h2><span class="bar"></span>担当コーチ。</h2>
+    </div>
+    <div class="coach-grid">
+      <div class="coach-img-wrap">
+        <img src="https://jakaujbhbgoodzmjyxfj.supabase.co/storage/v1/object/public/player-images/be1bf152-33f3-4373-9ef9-2863ce513580/1773094854690.png" alt="zerofour" loading="lazy" />
+      </div>
+      <div class="coach-text">
+        <div class="coach-name"><span class="nm">ZEROFOUR</span></div>
+        <div class="coach-role">FORMER NEOS COMPETITIVE PLAYER</div>
+        <p class="coach-bio">
+          NEOS eSportsに所属し、FNCSをはじめとする公式大会で実戦経験を積んできた元競技選手。
+          引退直後の現役感覚と、選手として培った戦略眼を活かし、これからの選手たちに「勝ち方」を伝える側に回る。
+        </p>
+        <div class="achievements">
+          <div class="achievements-label">主な実績</div>
+          <ul class="achievements-list">
+            <li><span class="rank">1st</span>アジアソロキャッシュカップ 優勝</li>
+            <li><span class="rank">★</span>FNCS グランドファイナル 出場</li>
+          </ul>
+        </div>
+        <div class="coach-stats">
+          <div class="stat"><strong>ex-NEOS</strong><span>所属チーム</span></div>
+          <div class="stat"><strong>FNCS</strong><span>主戦フィールド</span></div>
+          <div class="stat"><strong>2026</strong><span>引退・コーチ転向</span></div>
+        </div>
+        <a href="https://fortnitetracker.com/profile/all/NEOS%20ZerofouR" target="_blank" rel="noopener" class="tracker-link">
+          Fortnite Tracker で戦績を見る →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STYLE -->
+<section class="style">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">STYLE</div>
+      <h2 class="oneline"><span class="bar"></span>「教室型」ではなく「大会同行型」。</h2>
+    </div>
+    <div class="style-grid">
+      <div class="style-card">
+        <h3>本番に同行する</h3>
+        <p>練習場のレクチャーで終わらせない。実際の大会に一緒に出場し、その瞬間の判断・ミス・勝ち筋を共有する。</p>
+      </div>
+      <div class="style-card">
+        <h3>その場で言語化する</h3>
+        <p>「なんとなく上手い人」の感覚を、選手にも分かる言葉に翻訳。試合中・試合直後のコミュニケーションで定着させる。</p>
+      </div>
+      <div class="style-card">
+        <h3>振り返りはまとめて行う</h3>
+        <p>試合中は試合に集中。約3時間の大会が終わった後に、重要だった場面だけを重点的に振り返る。学びの効率と本番集中の両立。</p>
+      </div>
+      <div class="style-card">
+        <h3>NEOSの哲学で関わる</h3>
+        <p>GROWTH / TRUST / RESPECT。勝敗だけでなく、選手としての姿勢ごと一緒に伸ばす。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">FOR WHOM</div>
+      <h2 class="oneline"><span class="bar"></span>こんな選手のためのプログラムです。</h2>
+    </div>
+    <ul class="target-list">
+      <li>5月4日・5日のFNCS Divisional Cup（Division 2 または Division 3）に出場予定の方</li>
+      <li>13歳〜18歳の、競技志向で本気でフォートナイトに取り組む選手</li>
+      <li>自分の立ち回りを客観的に見てもらい、次の段階に進みたい方</li>
+      <li>ソロ練ではなく、実戦のなかで強くなりたい方</li>
+      <li>NEOSの環境・文化に触れてみたい方</li>
+    </ul>
+    <p style="margin-top:24px;color:var(--text-dim);font-size:14px;">
+      ※ 本プログラムはお試し期間として無料で実施しています。Division 1は本企画の対象外です。
+    </p>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">FLOW</div>
+      <h2><span class="bar"></span>申込から大会までの流れ。</h2>
+    </div>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <h4>応募フォーム送信</h4>
+        <p>Googleフォームから必要事項を入力して送信。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <h4>事前すり合わせ</h4>
+        <p>Discord等で簡単に挨拶と当日の段取り確認。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <h4>5/4・5/5 大会同行</h4>
+        <p>本番に一緒に出場。実戦のなかで立ち回り・コールを直接体験。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 04</div>
+        <h4>大会終了後の振り返り</h4>
+        <p>各日の大会（約3時間）終了後に、重要な場面をまとめて整理。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">FAQ</div>
+      <h2><span class="bar"></span>よくある質問。</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq">
+        <summary>本当に無料ですか？</summary>
+        <div class="faq-body">はい、今回はお試し期間としての実施のため無料です。コーチ側にとっても新しい取り組みのため、一緒に試させてもらう位置付けです。</div>
+      </details>
+      <details class="faq">
+        <summary>NEOSに所属していなくても参加できますか？</summary>
+        <div class="faq-body">いいえ。本企画はNEOSチーム限定のため、NEOSの競技選手のみご参加いただけます。</div>
+      </details>
+      <details class="faq">
+        <summary>Division 1は対象外とのことですが、なぜですか？</summary>
+        <div class="faq-body">Division 1まで到達した選手は、自力でパートナーを見つけ、自らの実力で結果を出していくフェーズだと考えています。本企画は、成長途上にある Division 2 / Division 3 の「伸びしろのある層」を重点的にサポートすることを目的としているため、Division 1 は対象外としています。</div>
+      </details>
+      <details class="faq">
+        <summary>どんな形でコーチングを受けますか？</summary>
+        <div class="faq-body">大会期間中、Discord等のボイスチャットでつないで実戦中・試合間にやり取りします。詳細は申込後の事前すり合わせで案内します。</div>
+      </details>
+      <details class="faq">
+        <summary>未成年ですが、保護者の同意は必要ですか？</summary>
+        <div class="faq-body">はい、未成年の方は保護者の同意の上でお申込みください。Googleフォーム内に確認項目があります。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="wrap">
+    <h2>READY TO <span class="accent">LEVEL UP</span>?</h2>
+    <p>5/4・5/5 のDivisional Cupまでに、まずはエントリーを。</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVXYOuk7xTXSjb5y-EdagBJV45vrJjRb8cuKsF4vKl9Fg1dA/viewform?usp=dialog" target="_blank" rel="noopener" class="btn-primary">無料で申し込む</a>
+  </div>
+</section>
+
+<footer>
+  <div class="brand" style="margin-bottom:8px;">NEOS<span style="color:var(--red);">/</span>COACHING</div>
+  <div>© NEOS eSports — Trial Coaching Program</div>
+</footer>
+
+</body>
+</html>
