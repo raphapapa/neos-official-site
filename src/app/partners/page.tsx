@@ -41,13 +41,13 @@ export default async function PartnersPage() {
 
   return (
     <div className="pt-28 pb-24 px-4">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-2xl mx-auto">
         <AnimateIn>
           <SectionHeading title="PARTNERS" subtitle="Our partners" />
         </AnimateIn>
 
         <AnimateIn delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          <div className="grid grid-cols-1 gap-8 mt-12">
             {partnerCards.map((partner) => (
               <Link
                 key={partner.slug}

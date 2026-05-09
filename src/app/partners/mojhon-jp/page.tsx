@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 export const metadata: Metadata = {
   title: "MOJHON | パートナー",
   description:
-    "NEOS E-SPORTSのスポンサー「MOJHON（モジョン）」のご紹介。グローバルブランド「BIGBIGWON」の日本展開ブランドとして、プロ仕様のゲーミングコントローラー・アダプターを開発・提供しています。",
+    "NEOS E-SPORTSのスポンサー「MOJHON（モジョン）」のご紹介。勝利への執着を、テクノロジーで肯定する。0.1秒・1ミリの操作精度で勝敗が決まる競技シーンへの深い理解のもと、プレイヤーの反射神経や直感をダイレクトにゲーム内へ反映させるゲーミングデバイスを提供します。",
 };
 
 export default function MojhonJpPage() {
@@ -44,28 +44,28 @@ export default function MojhonJpPage() {
 
               {/* テキスト */}
               <div className="flex-1 text-center md:text-left">
-                <h3 className="font-heading text-2xl md:text-3xl tracking-wider text-white mb-2">
+                <h3 className="font-heading text-2xl md:text-3xl tracking-wider text-white mb-6">
                   MOJHON
                 </h3>
-                <p className="text-xs tracking-widest text-neos-red uppercase mb-6">
-                  Play Big Won Big
-                </p>
                 <div className="space-y-4 text-sub-text text-sm leading-relaxed">
                   <p>
-                    MOJHON（モジョン）は、グローバルブランド「BIGBIGWON」の日本展開ブランド
+                    MOJHONが提供するのは単なる「道具」ではなく、プレイヤーの反射神経や直感をダイレクトにゲーム内へ反映させる「身体の拡張」という体験です。
                   </p>
                   <p>
-                    プロゲーマーの実戦から逆算した設計思想のもと、ワイヤレスコントローラー・アダプター・振動トリガーなど、勝つために最適化されたゲーミングデバイスを開発・提供
+                    ブランドの根底にあるのは、0.1秒、あるいは1ミリの操作精度で勝敗が決まる競技シーンへの深い理解です。
                   </p>
                   <p>
-                    BLITZ2・CHOCO・RAINBOW3・storm など、用途とプレイスタイルに応じた幅広いラインナップを展開
+                    独自開発のチップや高サンプリング技術は、すべて「ハードウェアがプレイヤーの足を引っ張らないこと」を目的に設計されています。
+                  </p>
+                  <p>
+                    「自分のポテンシャルを100%発揮したい」というストイックなゲーマーの熱量に寄り添うパートナー、それがMOJHONというブランドのアイデンティティです。
                   </p>
                 </div>
 
                 {/* SNS・サイトリンク */}
                 <div className="mt-8 flex flex-wrap items-center gap-6 justify-center md:justify-start">
                   <a
-                    href="https://twitter.com/bigbigwonJP"
+                    href="https://x.com/mojhonJP"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sub-text hover:text-white transition-colors text-sm"
@@ -77,7 +77,7 @@ export default function MojhonJpPage() {
                     >
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
-                    <span>@bigbigwonJP</span>
+                    <span>@mojhonJP</span>
                   </a>
                   <a
                     href="https://jp.mojhon.com/"
@@ -102,24 +102,6 @@ export default function MojhonJpPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </AnimateIn>
-
-        {/* 製品ビジュアル */}
-        <AnimateIn delay={0.15}>
-          <div className="mb-16">
-            <div className="relative w-full aspect-video rounded-sm overflow-hidden bg-card">
-              <Image
-                src="/images/partners/mojhon-jp/product/all-1920x1080.jpg"
-                alt="MOJHON 製品ラインナップ"
-                fill
-                sizes="(max-width: 768px) 100vw, 896px"
-                className="object-cover"
-              />
-            </div>
-            <p className="text-center text-sub-text text-xs tracking-widest mt-4 uppercase">
-              Product Lineup
-            </p>
           </div>
         </AnimateIn>
 
