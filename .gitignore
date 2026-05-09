@@ -42,3 +42,12 @@ next-env.d.ts
 
 # claude code session memo
 .claude-status
+
+# partner asset library (local only — only files explicitly used by pages are committed)
+/public/images/partners/mojhon-jp/*
+!/public/images/partners/mojhon-jp/logo/
+/public/images/partners/mojhon-jp/logo/*
+!/public/images/partners/mojhon-jp/logo/MOJHON.png
+!/public/images/partners/mojhon-jp/product/
+/public/images/partners/mojhon-jp/product/*
+!/public/images/partners/mojhon-jp/product/all-1920x1080.jpg

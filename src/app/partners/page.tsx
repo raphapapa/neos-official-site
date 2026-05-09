@@ -30,6 +30,13 @@ export default async function PartnersPage() {
       logoUrl: "/images/partners/trophy-seikatsu-logo.jpg",
       logoBg: "bg-white",
     },
+    {
+      slug: "mojhon-jp",
+      name: "MOJHON",
+      tagline: "Gaming Controllers & Devices",
+      logoUrl: "/images/partners/mojhon-jp/logo/MOJHON.png",
+      logoBg: "bg-white",
+    },
   ];
 
   return (
